@@ -5,4 +5,5 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="grupo9.tcc2018.usjt.com.tcc2018.MapActivity" />
+    tools:context="grupo9.tcc2018.usjt.com.tcc2018.MapActivity"
+    tools:layout="@layout/activity_map" />

@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">TCC2018</string>
+    <string name="app_name">Meu Busão</string>
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_signup">Cadastro</string>
+    <string name="facebook_app_id">769475619916513</string>
+    <string name="fb_login_protocol_scheme">fb769475619916513</string>
 </resources>
