@@ -143,20 +143,22 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
 
-            case 0: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        }
+        else {
+            switch (requestCode) {
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                case 0: {
+                    if (!(grantResults.length > 0
+                            && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                        Toast.makeText(getApplicationContext(), "Você precisa de permissão para rodar a aplicação.", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                // other 'case' lines to check for other
+                // permissions this app might request
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
@@ -181,10 +183,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        String[] param = new String[1];
+        int[] param1 = new int[1];
+        param1[0] = 0;
 
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-        }
+        onRequestPermissionsResult(0,param,param1);
         if(!checkLocationPermission()){
             // Add a marker in São Paulo and move the camera
             LatLng sp = new LatLng(-23.533773, -46.625290);

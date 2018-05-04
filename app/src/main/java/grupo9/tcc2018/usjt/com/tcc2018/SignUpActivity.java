@@ -82,7 +82,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
+        /**
+         * Essa linha está matando o app
         setResult(RESULT_OK, null);
+         */
         finish();
     }
 
