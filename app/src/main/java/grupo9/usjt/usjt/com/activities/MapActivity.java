@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,7 +35,10 @@ import butterknife.InjectView;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    @InjectView(R.id.search_button) EditText searchButton;
+    @InjectView(R.id.search_button)
+    Button searchButton;
+    @InjectView(R.id.textSearch)
+    EditText textSearch;
     private GoogleMap mMap;
     LocationManager locationManager;
     Location myLocation;
@@ -181,22 +185,29 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     public void onMapSearch(View view) {
-        EditText locationSearch = findViewById(R.id.editText);
+        EditText locationSearch = findViewById(R.id.textSearch);
         String location = locationSearch.getText().toString();
+        if(location.equals("")){
+            Toast.makeText(this,"Local de pesquisa não informado.",Toast.LENGTH_LONG).show();
+            return;
+        }
         List<Address> addressList = null;
 
-        if (location != null || !location.equals("")) {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
+        Geocoder geocoder = new Geocoder(this);
+        try {
+            addressList = geocoder.getFromLocationName(location, 1);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(!addressList.isEmpty()) {
             Address address = addressList.get(0);
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+        else{
+            Toast.makeText(this, "Local não encontrado",Toast.LENGTH_LONG).show();
         }
     }
 

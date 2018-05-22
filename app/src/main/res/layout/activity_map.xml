@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/textSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:textColorHint="@color/cardview_dark_background"
                 android:onClick="onMapSearch"
                 android:text="Search" />
 

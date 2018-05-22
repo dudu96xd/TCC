@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.helper.crypto.Encripta;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
 import grupo9.usjt.usjt.com.helper.dao.DBHelper;
@@ -98,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onSignupSuccess(ContaDTO dto) throws Exception {
 
         boolean b;
-        b = new DBHelper(this).insertConta(dto);
+        b = new ContaDAO(this).insertConta(dto);
         if(!b) {
             onSignupFailed();
         }

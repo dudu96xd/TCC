@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
 import grupo9.usjt.usjt.com.helper.crypto.Encripta;
 import grupo9.usjt.usjt.com.helper.dao.DBHelper;
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess(ContaDTO dto) throws Exception {
-        if(new DBHelper(this).findConta(dto)) {
+        if(new ContaDAO(this).findConta(dto)) {
             Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(getApplicationContext(), MapActivity.class);
