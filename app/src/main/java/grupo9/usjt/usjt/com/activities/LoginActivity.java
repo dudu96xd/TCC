@@ -1,4 +1,4 @@
-package grupo9.tcc2018.usjt.com.tcc2018;
+package grupo9.usjt.usjt.com.activities;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.dto.ContaDTO;
+import grupo9.usjt.usjt.com.helper.crypto.Encripta;
+import grupo9.usjt.usjt.com.helper.dao.DBHelper;
 
 public class LoginActivity extends AppCompatActivity {
     /***/private static final String TAG = "LoginActivity";
@@ -34,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                login();
+                try {
+                    login();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -49,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void login() {
+    public void login() throws Exception {
         Log.d(TAG, "Login");
 
-        if (!validate()) {
+        if (!validarEntrada()) {
             onLoginFailed();
             return;
         }
@@ -68,18 +75,21 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
+        final ContaDTO dto = new ContaDTO();
+        dto.setEmail(email);
+        dto.setSenha(password);
         // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
 
-                        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-                        startActivityForResult(intent, REQUEST_SIGNUP);
-
-                        // onLoginFailed();
+                        try {
+                            onLoginSuccess(dto);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -104,18 +114,26 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
+    public void onLoginSuccess(ContaDTO dto) throws Exception {
+        if(new DBHelper(this).findConta(dto)) {
+            Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+            startActivityForResult(intent, REQUEST_SIGNUP);
+
+            finish();
+        }
+        else
+            onLoginFailed();
         _loginButton.setEnabled(true);
-        finish();
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login não realizado.", Toast.LENGTH_LONG).show();
 
-        _loginButton.setEnabled(true);
     }
 
-    public boolean validate() {
+    public boolean validarEntrada() {
         boolean valid = true;
 
         String email = _emailText.getText().toString();

@@ -1,4 +1,4 @@
-package grupo9.tcc2018.usjt.com.tcc2018;
+package grupo9.usjt.usjt.com.activities;
 
 
 import android.app.ProgressDialog;
@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.helper.crypto.Encripta;
+import grupo9.usjt.usjt.com.dto.ContaDTO;
+import grupo9.usjt.usjt.com.helper.dao.DBHelper;
 
 public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
@@ -32,7 +35,11 @@ public class SignUpActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup();
+                try {
+                    signup();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -45,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void signup() {
+    public void signup() throws Exception {
         Log.d(TAG, "Signup");
 
         if (!validate()) {
@@ -58,12 +65,12 @@ public class SignUpActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this,
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Conta criada com sucesso!");
+        progressDialog.setMessage("Criando Conta...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        final String name = _nameText.getText().toString();
+        final String email = _emailText.getText().toString();
+        final String password =_passwordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
 
@@ -72,7 +79,15 @@ public class SignUpActivity extends AppCompatActivity {
                     public void run() {
                         // On complete call either onSignupSuccess or onSignupFailed
                         // depending on success
-                        onSignupSuccess();
+                        ContaDTO dto = new ContaDTO();
+                        dto.setEmail(email);
+                        dto.setNome(name);
+                        dto.setSenha(password);
+                        try {
+                            onSignupSuccess(dto);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         // onSignupFailed();
                         progressDialog.dismiss();
                     }
@@ -80,7 +95,13 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    public void onSignupSuccess() {
+    public void onSignupSuccess(ContaDTO dto) throws Exception {
+
+        boolean b;
+        b = new DBHelper(this).insertConta(dto);
+        if(!b) {
+            onSignupFailed();
+        }
         _signupButton.setEnabled(true);
         /**
          * Essa linha está matando o app

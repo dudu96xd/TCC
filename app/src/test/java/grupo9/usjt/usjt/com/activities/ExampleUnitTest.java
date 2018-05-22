@@ -1,4 +1,4 @@
-package grupo9.tcc2018.usjt.com.tcc2018;
+package grupo9.usjt.usjt.com.activities;
 
 import org.junit.Test;
 
