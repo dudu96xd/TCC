@@ -14,7 +14,7 @@ import grupo9.usjt.usjt.com.helper.crypto.Encripta;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "TCC.app";
+    public static final String DATABASE_NAME = "TCC.appBusao";
     public static final String CONTA_TABLE_NAME = "conta";
     public static final String CONTA_COLUMN_ID = "id_conta";
     public static final String CONTA_COLUMN_NAME = "name";
@@ -39,14 +39,14 @@ public class DBHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         db.execSQL(
                 "create table conta " +
-                        "(id_conta integer primary key autoincrement, name text,email text not null, password text not null)"
+                        "(id_conta integer primary key autoincrement, name text,email text unique not null, password text not null)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub
-        db.execSQL("DROP TABLE IF EXISTS contacts");
+        db.execSQL("DROP TABLE IF EXISTS conta");
         onCreate(db);
     }
 
@@ -94,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from contacts", null );
+        Cursor res =  db.rawQuery( "select * from conta", null );
         res.moveToFirst();
 
         while(res.isAfterLast() == false){
@@ -106,6 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean findConta(ContaDTO dto) throws Exception {
         String senhaEncriptada = encripta.encrypt(dto.getSenha());
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor res =  db.rawQuery( "SELECT 1 from conta where email=? and password=?",
                 new String[]{dto.getEmail(),senhaEncriptada } );
         int qtdLinhas = res.getCount();

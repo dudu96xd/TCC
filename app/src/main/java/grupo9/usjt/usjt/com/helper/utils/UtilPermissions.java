@@ -1,4 +1,4 @@
-package grupo9.usjt.usjt.com.activities;
+package grupo9.usjt.usjt.com.helper.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

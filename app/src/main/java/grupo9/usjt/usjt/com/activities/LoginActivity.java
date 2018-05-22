@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login não realizado.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Usuário e/ou senha inválidos.", Toast.LENGTH_LONG).show();
 
     }
 
