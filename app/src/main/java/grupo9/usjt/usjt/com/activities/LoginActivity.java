@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
+import grupo9.usjt.usjt.com.dto.UsuarioDTO;
 import grupo9.usjt.usjt.com.helper.crypto.Encripta;
 import grupo9.usjt.usjt.com.helper.dao.DBHelper;
 
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        final ContaDTO dto = new ContaDTO();
+        final UsuarioDTO dto = new ContaDTO();
         dto.setEmail(email);
         dto.setSenha(password);
         // TODO: Implement your own authentication logic here.
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess(ContaDTO dto) throws Exception {
+    public void onLoginSuccess(UsuarioDTO dto) throws Exception {
         if(new ContaDAO(this).findConta(dto)) {
             Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
 

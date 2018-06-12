@@ -9,12 +9,20 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import grupo9.usjt.usjt.com.dto.ContaDTO;
+import grupo9.usjt.usjt.com.dto.UsuarioDTO;
 import grupo9.usjt.usjt.com.helper.dao.DBHelper;
 
 public class ContaDAO extends DBHelper {
+
+    public static final String CONTA_COLUMN_ID = "id_conta";
+    public static final String CONTA_COLUMN_NAME = "name";
+    public static final String CONTA_COLUMN_EMAIL = "email";
+    public static final String CONTA_COLUMN_PASSWORD = "password";
+
     public ContaDAO(Context context) {
         super(context);
     }
+
 
     public boolean insertConta(ContaDTO dto) throws Exception {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -69,7 +77,7 @@ public class ContaDAO extends DBHelper {
         }
         return array_list;
     }
-    public boolean findConta(ContaDTO dto) throws Exception {
+    public boolean findConta(UsuarioDTO dto) throws Exception {
         String senhaEncriptada = encripta.encrypt(dto.getSenha());
         SQLiteDatabase db = this.getReadableDatabase();
 
