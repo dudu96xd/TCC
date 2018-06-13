@@ -9,14 +9,14 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class Encripta {
+public class EncriptaHelper {
 
     private final Cipher cipher;
     private final SecretKeySpec key;
     private AlgorithmParameterSpec spec;
     public static final String SEED_16_CHARACTER = "U1MjU1M0FDOUZ.Qz";
 
-    public Encripta() throws Exception {
+    public EncriptaHelper() throws Exception {
         // hash password with SHA-256 and crop the output to 128-bit for key
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.update(SEED_16_CHARACTER.getBytes("UTF-8"));

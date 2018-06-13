@@ -29,7 +29,7 @@ public class ContaDAO extends DBHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CONTA_COLUMN_NAME, dto.getNome());
         contentValues.put(CONTA_COLUMN_EMAIL, dto.getEmail());
-        contentValues.put(CONTA_COLUMN_PASSWORD, encripta.encrypt(dto.getSenha()));
+        contentValues.put(CONTA_COLUMN_PASSWORD, encriptaHelper.encrypt(dto.getSenha()));
         db.insert("conta", null, contentValues);
         return true;
     }
@@ -78,7 +78,7 @@ public class ContaDAO extends DBHelper {
         return array_list;
     }
     public boolean findConta(UsuarioDTO dto) throws Exception {
-        String senhaEncriptada = encripta.encrypt(dto.getSenha());
+        String senhaEncriptada = encriptaHelper.encrypt(dto.getSenha());
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor res =  db.rawQuery( "SELECT 1 from conta where email=? and password=?",

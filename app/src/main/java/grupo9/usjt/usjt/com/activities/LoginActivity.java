@@ -17,8 +17,8 @@ import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
 import grupo9.usjt.usjt.com.dto.UsuarioDTO;
-import grupo9.usjt.usjt.com.helper.crypto.Encripta;
-import grupo9.usjt.usjt.com.helper.dao.DBHelper;
+import grupo9.usjt.usjt.com.dto.ValidadorContaDTO;
+import grupo9.usjt.usjt.com.helper.utils.UtilsValidation;
 
 public class LoginActivity extends AppCompatActivity {
     /***/private static final String TAG = "LoginActivity";
@@ -58,15 +58,25 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void login() throws Exception {
+    public void login(){
         Log.d(TAG, "Login");
 
-        if (!validarEntrada()) {
-            onLoginFailed();
-            return;
+        _loginButton.setEnabled(false);
+
+        ValidadorContaDTO validadorContaDTO = UtilsValidation.validarEntrada(_emailText,_passwordText);
+
+        if (validadorContaDTO.isValidaEmail()) {
+            _emailText.setError("E-mail inválido.");
+        }
+        if(validadorContaDTO.isValidaSenha()){
+            _passwordText.setError("Senha com pelo menos quatro caracteres.");
         }
 
-        _loginButton.setEnabled(false);
+        //Se algum campo de login estiver inválido
+        if(validadorContaDTO.isValidaEmail() || validadorContaDTO.isValidaSenha()){
+            _loginButton.setEnabled(true);
+            return;
+        }
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
@@ -80,13 +90,10 @@ public class LoginActivity extends AppCompatActivity {
         final UsuarioDTO dto = new ContaDTO();
         dto.setEmail(email);
         dto.setSenha(password);
-        // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-
                         try {
                             onLoginSuccess(dto);
                         } catch (Exception e) {
@@ -125,8 +132,9 @@ public class LoginActivity extends AppCompatActivity {
 
             finish();
         }
-        else
+        else {
             onLoginFailed();
+        }
         _loginButton.setEnabled(true);
     }
 
@@ -135,26 +143,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public boolean validarEntrada() {
-        boolean valid = true;
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Entre com um e-mail válido");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Entre 4 e 10 caracteres alfanuméricos");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-
-        return valid;
-    }
 }

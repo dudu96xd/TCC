@@ -14,9 +14,9 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dao.ContaDAO;
-import grupo9.usjt.usjt.com.helper.crypto.Encripta;
+import grupo9.usjt.usjt.com.dto.ValidadorContaDTO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
-import grupo9.usjt.usjt.com.helper.dao.DBHelper;
+import grupo9.usjt.usjt.com.helper.utils.UtilsValidation;
 
 public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
@@ -56,12 +56,25 @@ public class SignUpActivity extends AppCompatActivity {
     public void signup() throws Exception {
         Log.d(TAG, "Signup");
 
-        if (!validate()) {
-            onSignupFailed();
-            return;
+        _signupButton.setEnabled(false);
+
+        ValidadorContaDTO dtoValidador = UtilsValidation.validarCadastro(_emailText,_passwordText,_nameText);
+
+        if (dtoValidador.isValidaEmail()) {
+            _emailText.setError("E-mail inválido.");
+        }
+        if(dtoValidador.isValidaSenha()){
+            _passwordText.setError("Senha com pelo menos quatro caracteres.");
+        }
+        if(dtoValidador.isValidaNome()){
+            _nameText.setError("Nome deve conter ao menos três caracteres.");
         }
 
-        _signupButton.setEnabled(false);
+        //Se algum campo estiver inválido
+        if(dtoValidador.isValidaNome() || dtoValidador.isValidaSenha() || dtoValidador.isValidaEmail()){
+            _signupButton.setEnabled(true);
+            return;
+        }
 
         final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this,
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
@@ -78,8 +91,6 @@ public class SignUpActivity extends AppCompatActivity {
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
                         ContaDTO dto = new ContaDTO();
                         dto.setEmail(email);
                         dto.setNome(name);
@@ -87,9 +98,9 @@ public class SignUpActivity extends AppCompatActivity {
                         try {
                             onSignupSuccess(dto);
                         } catch (Exception e) {
+                            onSignupFailed();
                             e.printStackTrace();
                         }
-                        // onSignupFailed();
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -104,10 +115,6 @@ public class SignUpActivity extends AppCompatActivity {
             onSignupFailed();
         }
         _signupButton.setEnabled(true);
-        /**
-         * Essa linha está matando o app
-        setResult(RESULT_OK, null);
-         */
         finish();
     }
 
@@ -117,34 +124,4 @@ public class SignUpActivity extends AppCompatActivity {
         _signupButton.setEnabled(true);
     }
 
-    public boolean validate() {
-        boolean valid = true;
-
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("pelo menos 3 caracteres");
-            valid = false;
-        } else {
-            _nameText.setError(null);
-        }
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("entre com um endereço de e-mail válido");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("entre 4 e 10 caracteres alfanuméricos");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-
-        return valid;
-    }
 }
