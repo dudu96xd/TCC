@@ -18,6 +18,7 @@ import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
 import grupo9.usjt.usjt.com.dto.UsuarioDTO;
 import grupo9.usjt.usjt.com.dto.ValidadorContaDTO;
+import grupo9.usjt.usjt.com.helper.crypto.EncriptaHelper;
 import grupo9.usjt.usjt.com.helper.utils.UtilsValidation;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     @InjectView(R.id.btn_login) Button _loginButton;
     @InjectView(R.id.link_signup) TextView _signupLink;
 
+    public static EncriptaHelper encriptaHelper;
+    static {
+        try {
+            encriptaHelper = new EncriptaHelper();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,15 +96,13 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        final UsuarioDTO dto = new ContaDTO();
-        dto.setEmail(email);
-        dto.setSenha(password);
+        final UsuarioDTO dto = preencheUsuarioDTO(email,password);
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         try {
-                            onLoginSuccess(dto);
+                            validarLogin(dto);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -104,6 +111,20 @@ public class LoginActivity extends AppCompatActivity {
                 }, 3000);
     }
 
+
+    public UsuarioDTO preencheUsuarioDTO(String email, String password){
+        final UsuarioDTO dto = new ContaDTO();
+        dto.setEmail(email);
+        try {
+            dto.setSenha(
+                    encriptaHelper.encrypt(password));
+        } catch (Exception e) {
+
+            Log.e(TAG,"Erro ao criptografar.");
+
+        }
+        return dto;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -123,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess(UsuarioDTO dto) throws Exception {
+    public void validarLogin(UsuarioDTO dto) throws Exception {
         if(new ContaDAO(this).findConta(dto)) {
             Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
 
@@ -139,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Usuário e/ou senha inválidos.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "E-mail e/ou senha inválidos.", Toast.LENGTH_LONG).show();
 
     }
 

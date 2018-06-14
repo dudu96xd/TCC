@@ -16,6 +16,7 @@ import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dao.ContaDAO;
 import grupo9.usjt.usjt.com.dto.ValidadorContaDTO;
 import grupo9.usjt.usjt.com.dto.ContaDTO;
+import grupo9.usjt.usjt.com.helper.crypto.EncriptaHelper;
 import grupo9.usjt.usjt.com.helper.utils.UtilsValidation;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -27,6 +28,14 @@ public class SignUpActivity extends AppCompatActivity {
     @InjectView(R.id.btn_signup) Button _signupButton;
     @InjectView(R.id.link_login) TextView _loginLink;
 
+    public static EncriptaHelper encriptaHelper;
+    static {
+        try {
+            encriptaHelper = new EncriptaHelper();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         final String name = _nameText.getText().toString();
         final String email = _emailText.getText().toString();
-        final String password =_passwordText.getText().toString();
+        final String password = encriptaHelper.encrypt(_passwordText.getText().toString());
 
         // TODO: Implement your own signup logic here.
 
