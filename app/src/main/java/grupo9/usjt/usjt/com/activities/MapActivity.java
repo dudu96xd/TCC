@@ -1,8 +1,9 @@
 package grupo9.usjt.usjt.com.activities;
 
+import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PermissionInfo;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -82,12 +83,40 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mapFragment.getMapAsync(this);
     }
 
+    private Location getLastKnownLocation(){
+        if( ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ){
+            return null;
+        }
+        Location bestLocation = null;
+        LocationManager locationManager =
+                (LocationManager) this.getSystemService( LOCATION_SERVICE );
+        if(locationManager!=null) {
+            List<String> providers = locationManager.getProviders(true);
+            for (String provider : providers) {
+                Location l = locationManager.getLastKnownLocation(provider);
+                if (l == null) {
+                    continue;
+                }
+                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                    bestLocation = l; // Found best last known location;
+                }
+            }
+        }
+        else{
+            Log.e("getLastKnownLocation()","Serviço de localização indisponível!");
+            Toast.makeText(getBaseContext(),"Serviço de localização indisponível!",Toast.LENGTH_LONG).show();
+            onBackPressed();
+        }
+        return bestLocation;
+    }
+
     public android.location.Location getLocation() {
         try {
             if(checkLocationPermission()){
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
                 // getting GPS status
+                assert locationManager != null;
                 isGPSEnabled = locationManager
                         .isProviderEnabled(LocationManager.GPS_PROVIDER);
 
@@ -97,7 +126,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, locationListenerGPS);
                     Log.d("GPS Enabled", "GPS Enabled");
                     if (locationManager != null) {
-                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        myLocation = getLastKnownLocation();
                         if (myLocation != null) {
                             isNetworkEnabled = true;
                             latitude = myLocation.getLatitude();
@@ -106,9 +135,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     }
                 }
 
-                if (!isGPSEnabled && !isNetworkEnabled) {
-                    // no network provider is enabled
-                } else {
+                if (isGPSEnabled || isNetworkEnabled) {
                     this.canGetLocation = true;
                     if (isNetworkEnabled) {
                         locationManager.requestLocationUpdates(
@@ -147,6 +174,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             }
                         }
                     }
+                } else {
+                    Toast.makeText(getBaseContext(),"Internet indisponível!",Toast.LENGTH_LONG).show();
+                    onBackPressed();
                 }
             }
         } catch (Exception e) {
@@ -158,17 +188,26 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
-
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-        }
-        else {
+            onStop();
+
+            if(!(grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+                //Sem permissão de localização a aplicação não pode funcionar
+                System.exit(0);
+            }
+            else{
+                myLocation = this.getLocation();
+            }
+        } else {
             switch (requestCode) {
 
                 case 0: {
                     if (!(grantResults.length > 0
                             && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                        Toast.makeText(getApplicationContext(), "Você precisa de permissão para rodar a aplicação.", Toast.LENGTH_SHORT).show();
+                        //Sem permissão de localização a aplicação não pode funcionar
+                        System.exit(0);
                     }
                 }
                 // other 'case' lines to check for other
@@ -176,7 +215,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         }
     }
-
 
     public boolean checkLocationPermission() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
@@ -200,11 +238,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(!addressList.isEmpty()) {
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        if(addressList!=null) {
+            if(!addressList.isEmpty()) {
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title(address.getAddressLine(0)));
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            }
         }
         else{
             Toast.makeText(this, "Local não encontrado",Toast.LENGTH_LONG).show();
@@ -229,15 +269,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         param1[0] = 0;
 
         onRequestPermissionsResult(0,param,param1);
-        if(!checkLocationPermission()){
-            // Add a marker in São Paulo and move the camera
-            LatLng sp = new LatLng(-23.533773, -46.625290);
-            mMap.addMarker(new MarkerOptions().position(sp).title("Marker in São Paulo"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sp));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
-        }
-        else
-            myLocation = this.getLocation();
+        myLocation = this.getLocation();
 
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);

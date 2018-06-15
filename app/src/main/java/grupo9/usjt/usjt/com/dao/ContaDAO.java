@@ -15,16 +15,16 @@ import grupo9.usjt.usjt.com.helper.dao.DBHelper;
 public class ContaDAO extends DBHelper {
 
     public static final String CONTA_COLUMN_ID = "id_conta";
-    public static final String CONTA_COLUMN_NAME = "name";
-    public static final String CONTA_COLUMN_EMAIL = "email";
-    public static final String CONTA_COLUMN_PASSWORD = "password";
+    private static final String CONTA_COLUMN_NAME = "name";
+    private static final String CONTA_COLUMN_EMAIL = "email";
+    private static final String CONTA_COLUMN_PASSWORD = "password";
 
     public ContaDAO(Context context) {
         super(context);
     }
 
 
-    public boolean insertConta(ContaDTO dto) throws Exception {
+    public boolean insertConta(ContaDTO dto){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CONTA_COLUMN_NAME, dto.getNome());
@@ -36,14 +36,12 @@ public class ContaDAO extends DBHelper {
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from conta where id_conta="+id+"", null );
-        return res;
+        return db.rawQuery( "select * from conta where id_conta="+id, null );
     }
 
     public int numberOfRows(){
         SQLiteDatabase db = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, CONTA_TABLE_NAME);
-        return numRows;
+        return (int) DatabaseUtils.queryNumEntries(db, CONTA_TABLE_NAME);
     }
 
     public boolean updateConta (Integer id, String name, String email, String password) {
@@ -64,29 +62,28 @@ public class ContaDAO extends DBHelper {
     }
 
     public ArrayList<String> findAllContas() {
-        ArrayList<String> array_list = new ArrayList<String>();
+        ArrayList<String> array_list = new ArrayList<>();
 
         //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from conta", null );
         res.moveToFirst();
 
-        while(res.isAfterLast() == false){
+        while(!res.isAfterLast()){
             array_list.add(res.getString(res.getColumnIndex(CONTA_COLUMN_NAME)));
             res.moveToNext();
         }
+        res.close();
         return array_list;
     }
-    public boolean findConta(UsuarioDTO dto) throws Exception {
+    public boolean findConta(UsuarioDTO dto){
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor res =  db.rawQuery( "SELECT 1 from conta where email=? and password=?",
                 new String[]{dto.getEmail(),dto.getSenha() } );
         int qtdLinhas = res.getCount();
-        if(qtdLinhas == 1){
-            return true;
-        }
-        return false;
+        res.close();
+        return qtdLinhas == 1;
     }
 
 }

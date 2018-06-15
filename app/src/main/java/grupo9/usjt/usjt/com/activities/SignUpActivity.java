@@ -104,19 +104,14 @@ public class SignUpActivity extends AppCompatActivity {
                         dto.setEmail(email);
                         dto.setNome(name);
                         dto.setSenha(password);
-                        try {
-                            onSignupSuccess(dto);
-                        } catch (Exception e) {
-                            onSignupFailed();
-                            e.printStackTrace();
-                        }
+                        onSignupSuccess(dto);
                         progressDialog.dismiss();
                     }
                 }, 3000);
     }
 
 
-    public void onSignupSuccess(ContaDTO dto) throws Exception {
+    public void onSignupSuccess(ContaDTO dto){
 
         boolean b;
         b = new ContaDAO(this).insertConta(dto);
@@ -129,8 +124,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Criação de conta falhou", Toast.LENGTH_LONG).show();
-
-        _signupButton.setEnabled(true);
     }
 
 }

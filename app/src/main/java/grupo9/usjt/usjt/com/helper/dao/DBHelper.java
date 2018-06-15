@@ -8,8 +8,8 @@ import grupo9.usjt.usjt.com.helper.crypto.EncriptaHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "TCC.appBusao";
-    public static final String CONTA_TABLE_NAME = "conta";
+    private static final String DATABASE_NAME = "TCC.appBusao";
+    private static final String CONTA_TABLE_NAME = "conta";
 
 
     public DBHelper(Context context) {

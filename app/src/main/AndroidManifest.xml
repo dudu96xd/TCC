@@ -51,7 +51,7 @@
         <activity android:name=".SignUpActivity"
             android:label="@string/title_activity_signup">
         </activity>
-        
+
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map">

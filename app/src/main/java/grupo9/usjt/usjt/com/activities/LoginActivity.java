@@ -101,11 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        try {
-                            validarLogin(dto);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        validarLogin(dto);
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -144,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void validarLogin(UsuarioDTO dto) throws Exception {
+    public void validarLogin(UsuarioDTO dto){
         if(new ContaDAO(this).findConta(dto)) {
             Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
 

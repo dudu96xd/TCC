@@ -14,7 +14,7 @@ public class EncriptaHelper {
     private final Cipher cipher;
     private final SecretKeySpec key;
     private AlgorithmParameterSpec spec;
-    public static final String SEED_16_CHARACTER = "U1MjU1M0FDOUZ.Qz";
+    private static final String SEED_16_CHARACTER = "U1MjU1M0FDOUZ.Qz";
 
     public EncriptaHelper() throws Exception {
         // hash password with SHA-256 and crop the output to 128-bit for key
@@ -28,7 +28,7 @@ public class EncriptaHelper {
         spec = getIV();
     }
 
-    public AlgorithmParameterSpec getIV() {
+    private AlgorithmParameterSpec getIV() {
         byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
         IvParameterSpec ivParameterSpec;
         ivParameterSpec = new IvParameterSpec(iv);
@@ -39,19 +39,15 @@ public class EncriptaHelper {
     public String encrypt(String plainText) throws Exception {
         cipher.init(Cipher.ENCRYPT_MODE, key, spec);
         byte[] encrypted = cipher.doFinal(plainText.getBytes("UTF-8"));
-        String encryptedText = new String(Base64.encode(encrypted,
+        return  new String(Base64.encode(encrypted,
                 Base64.DEFAULT), "UTF-8");
-
-        return encryptedText;
     }
 
     public String decrypt(String cryptedText) throws Exception {
         cipher.init(Cipher.DECRYPT_MODE, key, spec);
         byte[] bytes = Base64.decode(cryptedText, Base64.DEFAULT);
         byte[] decrypted = cipher.doFinal(bytes);
-        String decryptedText = new String(decrypted, "UTF-8");
-
-        return decryptedText;
+        return new String(decrypted, "UTF-8");
     }
 
 }
