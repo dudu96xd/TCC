@@ -41,7 +41,7 @@ public class ContaDAO extends DBHelper {
 
     public int numberOfRows(){
         SQLiteDatabase db = this.getReadableDatabase();
-        return (int) DatabaseUtils.queryNumEntries(db, CONTA_TABLE_NAME);
+        return (int) DatabaseUtils.queryNumEntries(db, DBHelper.CONTA_TABLE_NAME);
     }
 
     public boolean updateConta (Integer id, String name, String email, String password) {

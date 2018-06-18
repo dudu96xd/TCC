@@ -9,7 +9,7 @@ import grupo9.usjt.usjt.com.helper.crypto.EncriptaHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "TCC.appBusao";
-    private static final String CONTA_TABLE_NAME = "conta";
+    protected static final String CONTA_TABLE_NAME = "conta";
 
 
     public DBHelper(Context context) {
@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "create table conta " +
                         "(id_conta integer primary key autoincrement, name text,email text unique not null, password text not null)"
         );
+        //db.execSQL("create table local_pref (id_local_pref)");
     }
 
     @Override
