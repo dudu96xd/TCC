@@ -1,8 +1,12 @@
 package grupo9.usjt.usjt.com.activities;
 
 import android.app.ProgressDialog;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 
 import android.content.Intent;
@@ -21,6 +25,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dao.ContaDAO;
@@ -50,11 +56,34 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void printKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.i("KeyHash:",
+                        Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("jk", "Exception(NameNotFoundException) : " + e);
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("mkm", "Exception(NoSuchAlgorithmException) : " + e);
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //printKeyHash();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+
+        LoginManager.getInstance().logOut();
+
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
