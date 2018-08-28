@@ -1,4 +1,4 @@
-#Mon Aug 20 21:46:40 BRT 2018
+#Mon Aug 27 20:58:03 BRT 2018
 base.0=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
 path.0=classes.dex
 renamed.0=classes.dex

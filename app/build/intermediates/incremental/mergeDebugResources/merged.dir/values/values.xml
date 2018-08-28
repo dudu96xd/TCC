@@ -894,6 +894,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_map">Map</string>
     <string name="title_activity_signup">Cadastro</string>
+    <string name="token_olho_vivo">ba9a2b9775a7965dee652817a9befd6d107242a2121b5e78562f60cd14961c69</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

@@ -1283,6 +1283,7 @@ int string search_menu_title 0x7f0c0052
 int string status_bar_notification_info_overflow 0x7f0c0053
 int string title_activity_map 0x7f0c0054
 int string title_activity_signup 0x7f0c0055
+int string token_olho_vivo 0x7f0c0056
 int style AlertDialog_AppCompat 0x7f0d0000
 int style AlertDialog_AppCompat_Light 0x7f0d0001
 int style Animation_AppCompat_Dialog 0x7f0d0002

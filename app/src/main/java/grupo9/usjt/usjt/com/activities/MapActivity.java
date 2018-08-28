@@ -35,6 +35,11 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
+import grupo9.usjt.usjt.com.services.OlhoVivoService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -49,6 +54,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60;
     double latitude,longitude;
+    String apiCredentials;
 
     LocationListener locationListenerGPS=new LocationListener() {
         @Override
@@ -83,6 +89,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         ButterKnife.inject(this);
     }
 
@@ -254,6 +261,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             e.printStackTrace();
         }
         if(addressList!=null) {
+
+            RetrofitConfig config  = new RetrofitConfig();
+            OlhoVivoService service = config.getTokenService();
+            Call<String> call = service.auth("ba9a2b9775a7965dee652817a9befd6d107242a2121b5e78562f60cd14961c69");
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Object cep = response.body();
+                    response.headers();
+                    apiCredentials = response.headers().get("Set-Cookie").substring(15).split(";")[0];
+                    Log.d("tokenApi",apiCredentials);
+                    Log.d("dados",cep.toString()+"/n"+response.headers().toString());
+                    //resposta.setText(cep.toString());
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.e("Erro de integracao","Deu ruim na integracao");
+                }
+
+            });
             if(!addressList.isEmpty()) {
                 Address address = addressList.get(0);
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());

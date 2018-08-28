@@ -4013,6 +4013,7 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0c0053;
     public static final int title_activity_map=0x7f0c0054;
     public static final int title_activity_signup=0x7f0c0055;
+    public static final int token_olho_vivo=0x7f0c0056;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0d0000;
