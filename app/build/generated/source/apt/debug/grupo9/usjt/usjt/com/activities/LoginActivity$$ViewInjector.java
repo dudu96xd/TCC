@@ -12,8 +12,8 @@ public class LoginActivity$$ViewInjector<T extends grupo9.usjt.usjt.com.activiti
     target._emailText = finder.castView(view, 2131230828, "field '_emailText'");
     view = finder.findRequiredView(source, 2131230830, "field '_passwordText'");
     target._passwordText = finder.castView(view, 2131230830, "field '_passwordText'");
-    view = finder.findRequiredView(source, 2131230763, "field '_loginButton'");
-    target._loginButton = finder.castView(view, 2131230763, "field '_loginButton'");
+    view = finder.findRequiredView(source, 2131230762, "field '_loginButton'");
+    target._loginButton = finder.castView(view, 2131230762, "field '_loginButton'");
     view = finder.findRequiredView(source, 2131230840, "field '_signupLink'");
     target._signupLink = finder.castView(view, 2131230840, "field '_signupLink'");
     view = finder.findRequiredView(source, 2131230843, "field '_fbLogin'");

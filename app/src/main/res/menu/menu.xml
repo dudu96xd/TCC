@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MenuBarActivity">
+
     <item
-        android:id="@+id/action_refresh"
-        android:orderInCategory="100"
-        android:title="Refresh"
-        app:showAsAction="always" />
+        android:id="@+id/add" android:icon="@android:drawable/btn_star_big_on" app:showAsAction="always"   android:title="@string/fav_item"/>
     <item
-        android:id="@+id/action_settings"
-        android:title="Settings">
+        android:id="@+id/about" android:icon="@android:drawable/ic_dialog_info" app:showAsAction="never" android:title="@string/about">
+    </item>
+    <item
+        android:id="@+id/exit"  app:showAsAction="never" android:title="@string/exit">
     </item>
 </menu>

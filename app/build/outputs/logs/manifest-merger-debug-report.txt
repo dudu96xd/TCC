@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
 MERGED from [com.android.support:design:27.0.2] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\edfa42255d6f918c7a5ba581da0fbca5\AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.android:facebook-login:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.0.aar\fbe0e404f4d0d622ce4e3da156a4962e\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:21:1-37:12
@@ -31,20 +31,20 @@ MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\abf20977f3f63545ad63a66a55e8e08e\AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\601fe45373f8d201fdfb3ec2583fc07a\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\60e32cbb031cc1a271bb748a658b8968\AndroidManifest.xml:2:1-6:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
-INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
 	package
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-77:12
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:1-80:12
 		INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:2:11-69
@@ -73,7 +73,7 @@ ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:13:5-75
 	android:name
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:13:22-73
 application
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:14:5-75:19
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:14:5-78:19
 MERGED from [com.facebook.android:facebook-login:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.0.aar\fbe0e404f4d0d622ce4e3da156a4962e\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-login:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.0.aar\fbe0e404f4d0d622ce4e3da156a4962e\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:28:5-35:19
@@ -100,6 +100,8 @@ MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:19:9-35
 	android:label
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:17:9-41
+	android:resizeableActivity
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:21:9-42
 	android:roundIcon
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:18:9-47
 	android:icon
@@ -109,85 +111,91 @@ MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users
 	android:theme
 		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:20:9-65
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:24:9-25:54
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:25:9-26:54
 	android:value
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:25:13-52
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:26:13-52
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:24:20-65
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:25:20-65
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:34:9-36:55
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:35:9-37:55
 	android:value
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:36:13-52
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:37:13-52
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:35:13-58
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:36:13-58
 activity#grupo9.usjt.usjt.com.activities.LoginActivity
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:38:9-44:20
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:39:9-45:20
 	android:label
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:39:13-45
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:40:13-45
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:38:19-48
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:39:19-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:40:13-43:29
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:41:13-44:29
 action#android.intent.action.MAIN
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:41:17-69
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:42:17-69
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:41:25-66
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:42:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:42:17-77
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:43:17-77
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:42:27-74
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:43:27-74
 activity#grupo9.usjt.usjt.com.activities.SignUpActivity
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:46:9-48:20
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:47:9-49:20
 	android:label
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:47:13-58
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:48:13-58
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:46:19-49
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:47:19-49
 activity#grupo9.usjt.usjt.com.activities.MapActivity
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:50:9-54:20
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:51:9-56:20
+	android:parentActivityName
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:52:13-58
 	android:label
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:53:13-55
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:55:13-45
 	android:theme
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:51:13-69
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:53:13-71
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:52:13-40
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:54:13-40
 activity#com.facebook.FacebookActivity
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:59:9-62:48
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:61:9-64:48
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:29:9-32:66
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:29:9-32:66
 	android:label
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:62:13-45
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:64:13-45
 	android:configChanges
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:60:13-114
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:62:13-114
 	android:theme
 		ADDED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:32:13-63
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:59:19-63
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:61:19-63
 activity#com.facebook.CustomTabActivity
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:64:9-73:20
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:66:9-75:20
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:34:9-67
 MERGED from [com.facebook.android:facebook-common:4.36.0] C:\Users\dudu9\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.0.aar\33d4b15b4a9614ca9bf871d94ef63a71\AndroidManifest.xml:34:9-67
 	android:exported
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:66:13-36
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:68:13-36
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:65:13-58
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:67:13-58
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:67:13-72:29
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:69:13-74:29
 action#android.intent.action.VIEW
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:68:17-69
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:70:17-69
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:68:25-66
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:70:25-66
 category#android.intent.category.DEFAULT
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:69:17-76
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:71:17-76
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:69:27-73
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:71:27-73
 category#android.intent.category.BROWSABLE
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:70:17-78
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:72:17-78
 	android:name
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:70:27-75
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:72:27-75
 data
-ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:71:17-75
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:73:17-75
 	android:scheme
-		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:71:23-72
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:73:23-72
+activity#grupo9.usjt.usjt.com.activities.MenuBarActivity
+ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:76:9-53
+	android:name
+		ADDED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml:76:19-50
 uses-sdk
 INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Development\Source\TCC\app\src\main\AndroidManifest.xml

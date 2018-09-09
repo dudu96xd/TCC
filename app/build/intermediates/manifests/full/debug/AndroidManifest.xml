@@ -27,6 +27,7 @@
         android:debuggable="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:resizeableActivity="true"
         android:roundIcon="@drawable/logomini"
         android:supportsRtl="true"
         android:testOnly="true"
@@ -61,8 +62,9 @@
         </activity>
         <activity
             android:name="grupo9.usjt.usjt.com.activities.MapActivity"
-            android:label="@string/title_activity_map"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:label="@string/app_name"
+            android:parentActivityName="grupo9.usjt.usjt.com.activities.MenuBarActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         </activity>
 
         <meta-data
@@ -86,6 +88,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name="grupo9.usjt.usjt.com.activities.MenuBarActivity" />
         <activity android:name="com.facebook.CustomTabMainActivity" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

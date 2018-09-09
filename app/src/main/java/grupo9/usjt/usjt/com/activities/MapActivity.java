@@ -11,10 +11,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,14 +33,12 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
-import grupo9.usjt.usjt.com.helper.utils.TokenHelper;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +58,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60;
     double latitude,longitude;
-    String token;
 
     LocationListener locationListenerGPS=new LocationListener() {
         @Override
@@ -86,7 +86,29 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     };
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    //
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+        case R.id.add:
+            //add the function to perform here
+            return(true);
+        case R.id.about:
+            //add the function to perform here
+            return(true);
+        case R.id.exit:
+            //add the function to perform here
+            return(true);
+        }
+        return(super.onOptionsItemSelected(item));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -276,6 +298,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             call.enqueue(new Callback<List<BuscaDTO>>() {
                 @Override
                 public void onResponse(@NonNull Call<List<BuscaDTO>> call, @NonNull Response<List<BuscaDTO>> response) {
+
                     if(response.body().isEmpty()) {
                         Toast.makeText(getBaseContext(),"Não foram encontradas Linhas com sua pesquisa!",Toast.LENGTH_LONG).show();
                     }
@@ -331,8 +354,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
-
-        token = TokenHelper.token;
 
     }
 
