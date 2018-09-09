@@ -1,15 +1,15 @@
 #Internal package file, do not edit.
-#Mon Aug 27 20:58:04 BRT 2018
-1.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\17
+#Sun Sep 09 15:02:05 BRT 2018
+1.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\94
 2.path=classes.dex
 0.baseType=DIRECTORY
-2.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
+2.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\96
 2.set=DEX
 1.baseType=DIRECTORY
 count=3
 1.set=DEX
 0.path=classes.dex
 0.set=DEX
-0.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+0.base=C\:\\Development\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\95
 2.baseType=DIRECTORY
 1.path=classes.dex

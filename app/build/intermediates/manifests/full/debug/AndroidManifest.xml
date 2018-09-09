@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="21"
         android:targetSdkVersion="27" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -30,7 +30,7 @@
         android:roundIcon="@drawable/logomini"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -61,7 +61,8 @@
         </activity>
         <activity
             android:name="grupo9.usjt.usjt.com.activities.MapActivity"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
 
         <meta-data

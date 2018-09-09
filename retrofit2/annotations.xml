@@ -1,0 +1,5 @@
+<root>
+    <item name='retrofit2.Callback'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

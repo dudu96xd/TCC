@@ -1,5 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.squareup.retrofit2:retrofit:2.3.0@jar">
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$" />
+    </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/bcacde6a8ccedcc56c127403d26b76072fe6214d/retrofit-2.3.0.jar!/" />
     </CLASSES>

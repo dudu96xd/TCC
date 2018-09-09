@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PermissionInfo;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,8 +12,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,22 +30,26 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import grupo9.usjt.usjt.com.dto.BuscaDTO;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
+import grupo9.usjt.usjt.com.helper.utils.TokenHelper;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     @InjectView(R.id.search_button)
     Button searchButton;
     @InjectView(R.id.textSearch)
     EditText textSearch;
+
     private GoogleMap mMap;
     LocationManager locationManager;
     Location myLocation;
@@ -54,13 +57,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60;
     double latitude,longitude;
-    String apiCredentials;
+    String token;
 
     LocationListener locationListenerGPS=new LocationListener() {
         @Override
         public void onLocationChanged(android.location.Location location) {
             latitude=location.getLatitude();
             longitude=location.getLongitude();
+            getLocation(false);
+
             //String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             //Toast.makeText(mContext,msg,Toast.LENGTH_LONG).show();
         }
@@ -81,6 +86,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +96,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
         ButterKnife.inject(this);
+
     }
 
     private Location getLastKnownLocation(){
@@ -132,7 +140,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         minimizeApp();
     }
 
-    public android.location.Location getLocation() {
+    public android.location.Location getLocation(boolean flagZoom) {
         try {
             if(checkLocationPermission()){
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -173,13 +181,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                             CameraPosition myPosition = new CameraPosition.Builder()
                                     .target(myLatLng).build();
-                            mMap.animateCamera(
-                                    CameraUpdateFactory.newCameraPosition(myPosition));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
-                            mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
-                            mMap.clear();
-                            mMap.addMarker(new MarkerOptions().position(myLatLng).title("Localização atual."));
-                            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                            if(flagZoom){
+                                mMap.animateCamera(
+                                        CameraUpdateFactory.newCameraPosition(myPosition));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
+                                mMap.addMarker(new MarkerOptions().position(myLatLng).title("Localização atual."));
+                                mMap.clear();
+                            }
                         }
                     }
                     // if GPS Enabled get lat/long using GPS Services
@@ -220,7 +229,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 System.exit(0);
             }
             else{
-                myLocation = this.getLocation();
+                myLocation = this.getLocation(true);
             }
         } else {
             switch (requestCode) {
@@ -244,10 +253,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         return (res == PackageManager.PERMISSION_GRANTED);
     }
 
+    //private final String apiCredentials = getToken() ;
+
+
+
     public void onMapSearch(View view) {
         EditText locationSearch = findViewById(R.id.textSearch);
         String location = locationSearch.getText().toString();
-        if(location.equals("")){
+        if(location.isEmpty()){
             Toast.makeText(this,"Local de pesquisa não informado.",Toast.LENGTH_LONG).show();
             return;
         }
@@ -255,33 +268,35 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         Geocoder geocoder = new Geocoder(this);
         try {
-            addressList = geocoder.getFromLocationName(location, 1);
 
+            addressList = geocoder.getFromLocationName(location, 1);
+            RetrofitConfig config = new RetrofitConfig();
+            OlhoVivoService service = config.create();
+            Call<List<BuscaDTO>> call = service.buscar(locationSearch.getText().toString());
+            call.enqueue(new Callback<List<BuscaDTO>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<BuscaDTO>> call, @NonNull Response<List<BuscaDTO>> response) {
+                    if(response.body().isEmpty()) {
+                        Toast.makeText(getBaseContext(),"Não foram encontradas Linhas com sua pesquisa!",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        BuscaDTO dtoBusca = response.body().get(0);
+                        System.out.println(dtoBusca.toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<BuscaDTO>> call, Throwable t) {
+                    Log.e("Erro de integracao", "Deu ruim na integracao");
+                    t.printStackTrace();
+                }
+
+
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
         if(addressList!=null) {
-
-            RetrofitConfig config  = new RetrofitConfig();
-            OlhoVivoService service = config.getTokenService();
-            Call<String> call = service.auth("ba9a2b9775a7965dee652817a9befd6d107242a2121b5e78562f60cd14961c69");
-            call.enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    Object cep = response.body();
-                    response.headers();
-                    apiCredentials = response.headers().get("Set-Cookie").substring(15).split(";")[0];
-                    Log.d("tokenApi",apiCredentials);
-                    Log.d("dados",cep.toString()+"/n"+response.headers().toString());
-                    //resposta.setText(cep.toString());
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Log.e("Erro de integracao","Deu ruim na integracao");
-                }
-
-            });
             if(!addressList.isEmpty()) {
                 Address address = addressList.get(0);
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
@@ -312,10 +327,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         param1[0] = 0;
 
         onRequestPermissionsResult(0,param,param1);
-        myLocation = this.getLocation();
+        myLocation = this.getLocation(true);
 
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
+
+        token = TokenHelper.token;
 
     }
 

@@ -8,10 +8,10 @@ import butterknife.ButterKnife.Injector;
 public class MapActivity$$ViewInjector<T extends grupo9.usjt.usjt.com.activities.MapActivity> implements Injector<T> {
   @Override public void inject(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131230882, "field 'searchButton'");
-    target.searchButton = finder.castView(view, 2131230882, "field 'searchButton'");
-    view = finder.findRequiredView(source, 2131230915, "field 'textSearch'");
-    target.textSearch = finder.castView(view, 2131230915, "field 'textSearch'");
+    view = finder.findRequiredView(source, 2131230884, "field 'searchButton'");
+    target.searchButton = finder.castView(view, 2131230884, "field 'searchButton'");
+    view = finder.findRequiredView(source, 2131230917, "field 'textSearch'");
+    target.textSearch = finder.castView(view, 2131230917, "field 'textSearch'");
   }
 
   @Override public void reset(T target) {

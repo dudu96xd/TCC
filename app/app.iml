@@ -122,13 +122,13 @@
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.zxing:core:3.3.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:logging-interceptor:3.8.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-common-4.35.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-license-11.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-core-4.36.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-maps-license-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-27.0.2" level="project" />
-    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-login-4.35.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:rules-1.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-license-11.8.0" level="project" />
@@ -148,11 +148,12 @@
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.jakewharton:butterknife:6.1.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-common-4.36.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.retrofit2:converter-jackson:2.3.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.7.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-core-4.35.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.android:facebook-login-4.36.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.0.2@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />

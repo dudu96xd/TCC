@@ -1,18 +1,16 @@
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="grupo9.usjt.usjt.com.activities.MapActivity"
-    >
+    tools:context="grupo9.usjt.usjt.com.activities.MapActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:orientation="horizontal">
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
