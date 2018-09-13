@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -31,6 +32,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,13 +41,15 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
+import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Streaming;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnPolylineClickListener {
 
     @InjectView(R.id.search_button)
     Button searchButton;
@@ -295,30 +300,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             RetrofitConfig config = new RetrofitConfig();
             OlhoVivoService service = config.create();
             Call<List<BuscaDTO>> call = service.buscar(locationSearch.getText().toString());
-            call.enqueue(new Callback<List<BuscaDTO>>() {
-                @Override
-                public void onResponse(@NonNull Call<List<BuscaDTO>> call, @NonNull Response<List<BuscaDTO>> response) {
+            Response<List<BuscaDTO>> response = call.execute();
 
-                    if(response.body().isEmpty()) {
-                        Toast.makeText(getBaseContext(),"Não foram encontradas Linhas com sua pesquisa!",Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        BuscaDTO dtoBusca = response.body().get(0);
-                        System.out.println(dtoBusca.toString());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<BuscaDTO>> call, Throwable t) {
-                    Log.e("Erro de integracao", "Deu ruim na integracao");
-                    t.printStackTrace();
-                }
+            Call<PosicaoOnibusDTO> call2 = service.buscarOnibus(response.body().get(0).getCdLinha());
+            Response<PosicaoOnibusDTO> response2 = call2.execute();
 
 
-            });
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         if(addressList!=null) {
             if(!addressList.isEmpty()) {
                 Address address = addressList.get(0);
@@ -352,6 +343,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         onRequestPermissionsResult(0,param,param1);
         myLocation = this.getLocation(true);
 
+        Polyline line = mMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(-23.54749,-46.640068)).add(new LatLng(-23.547469,-46.639953)).add(new LatLng(-23.547432,-46.639754)).add(new LatLng(-23.546026,-46.638818)).add(new LatLng(-23.545038,-46.638042))
+                .width(5)
+                .color(Color.BLACK));
+
+        mMap.setOnPolylineClickListener(this);
+
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
 
@@ -376,5 +374,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         return bounds;
+    }
+@Streaming
+    @Override
+    public void onPolylineClick(Polyline polyline) {
+
     }
 }

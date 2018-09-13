@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Development\\Source\\TCC\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uk\\values-uk.xml",
+            "outputFile": "C:\\dev\\source\\TCC\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uk\\values-uk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\42f9784b66efbe1c7a3edd45d16e9520\\res\\values-uk\\values-uk.xml",
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\a01147daf0364fb9376985b6762dc6fa\\res\\values-uk\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "283",
+                        "endColumns": "204",
+                        "endOffsets": "487"
+                    },
+                    "to": {
+                        "startLines": "27",
+                        "startColumns": "4",
+                        "startOffsets": "3048",
+                        "endColumns": "204",
+                        "endOffsets": "3248"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\364e78ce08d7c9a93b0209f2f04c8ad4\\res\\values-uk\\values-uk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,24 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\3668dea4a6bb20c25bcb4b01b5928314\\res\\values-uk\\values-uk.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "38",
-                        "startColumns": "4",
-                        "startOffsets": "4675",
-                        "endColumns": "100",
-                        "endOffsets": "4771"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\4e69cbb6f9a43f6ec090b35e2a10cd54\\res\\values-uk\\values.xml",
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\556bd4539b9b25e0051e05170863ad6c\\res\\values-uk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\93461e2253787756a586f2e6ba973c65\\res\\values-uk\\values.xml",
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\fd306348582dffec60554a3517718cac\\res\\values-uk\\values-uk.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "283",
-                        "endColumns": "204",
-                        "endOffsets": "487"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "27",
+                        "startLines": "38",
                         "startColumns": "4",
-                        "startOffsets": "3048",
-                        "endColumns": "204",
-                        "endOffsets": "3248"
+                        "startOffsets": "4675",
+                        "endColumns": "100",
+                        "endOffsets": "4771"
                     }
                 }
             ]

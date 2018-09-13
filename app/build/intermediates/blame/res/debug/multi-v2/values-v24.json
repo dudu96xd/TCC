@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Development\\Source\\TCC\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "C:\\dev\\source\\TCC\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\42f9784b66efbe1c7a3edd45d16e9520\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\364e78ce08d7c9a93b0209f2f04c8ad4\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dudu9\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.0.2.aar\\d15cf1fcb8604752277749c81c43ef0d\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\PINPOINT\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.0.2.aar\\745ac22d4997b5dbe484615341286ce2\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
