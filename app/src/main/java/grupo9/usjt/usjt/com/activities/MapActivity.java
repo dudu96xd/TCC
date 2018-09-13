@@ -98,7 +98,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
         case R.id.add:
-            //add the function to perform here
+            Toast.makeText(getBaseContext(),"Favotitos selecionado!",Toast.LENGTH_LONG).show();
             return(true);
         case R.id.about:
             //add the function to perform here
