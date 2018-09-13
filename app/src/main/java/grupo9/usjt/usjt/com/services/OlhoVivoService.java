@@ -3,6 +3,7 @@ package grupo9.usjt.usjt.com.services;
 import java.util.List;
 
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
+import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.helper.utils.TokenHelper;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -17,5 +18,8 @@ public interface OlhoVivoService {
 
     @GET("Linha/Buscar/{termosBusca}")
     Call<List<BuscaDTO>>buscar(@Query("termosBusca")String linha);
+
+    @GET("Posicao/Linha/{codigoLinha}")
+    Call<PosicaoOnibusDTO>buscarOnibus(@Query("codigoLinha")String linha);
 
 }

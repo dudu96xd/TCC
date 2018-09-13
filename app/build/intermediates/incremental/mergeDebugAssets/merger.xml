@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Development\Source\TCC\app\src\main\assets"/><source path="C:\Development\Source\TCC\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Development\Source\TCC\app\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\dev\source\TCC\app\src\main\assets"/><source path="C:\dev\source\TCC\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\dev\source\TCC\app\src\debug\assets"/></dataSet></merger>
