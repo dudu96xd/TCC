@@ -3935,8 +3935,18 @@ public final class R {
     public static final int ic_launcher_round=0x7f0c0001;
   }
   public static final class raw {
-    public static final int night=0x7f0d0000;
-    public static final int retro=0x7f0d0001;
+    public static final int agency=0x7f0d0000;
+    public static final int calendar=0x7f0d0001;
+    public static final int fare_attributes=0x7f0d0002;
+    public static final int fare_rules=0x7f0d0003;
+    public static final int frequencies=0x7f0d0004;
+    public static final int night=0x7f0d0005;
+    public static final int retro=0x7f0d0006;
+    public static final int routes=0x7f0d0007;
+    public static final int shapes=0x7f0d0008;
+    public static final int stop_times=0x7f0d0009;
+    public static final int stops=0x7f0d000a;
+    public static final int trips=0x7f0d000b;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0e0000;

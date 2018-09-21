@@ -43,7 +43,9 @@ import java.util.Objects;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
+import grupo9.usjt.usjt.com.dto.ParadaCSVDTO;
 import grupo9.usjt.usjt.com.dto.ParadaDTO;
+import grupo9.usjt.usjt.com.helper.utils.JsonParser;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
@@ -68,7 +70,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         public void onLocationChanged(android.location.Location location) {
             latitude=location.getLatitude();
             longitude=location.getLongitude();
-            getLocation(false);
+            LatLng myLatLng = new LatLng(latitude,
+                    longitude);
+
+            CameraPosition myPosition = new CameraPosition.Builder()
+                    .target(myLatLng).build();
+            mMap.animateCamera(
+                    CameraUpdateFactory.newCameraPosition(myPosition));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
+            mMap.addMarker(new MarkerOptions().position(myLatLng).title("Localização atual."));
 
             //String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             //Toast.makeText(mContext,msg,Toast.LENGTH_LONG).show();
@@ -380,6 +391,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
             }
 
+            JsonParser parser = new JsonParser(this);
+            String idTrip = parser.readTrips(getIntent().getSerializableExtra("letreiroPrinc")+"-"+getIntent().getSerializableExtra("letreiroSec"));
+
+            bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.shelterbusstation);
+            b=bitmapdraw.getBitmap();
+            smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
+            List<ParadaCSVDTO> listaPontos = parser.findPontosParada(idTrip);
+            for(ParadaCSVDTO dto : listaPontos){
+                LatLng latLng = new LatLng(dto.getPy(), dto.getPx());
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Ponto de Onibus").icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+            }
+
             RetrofitConfig config = new RetrofitConfig();
             OlhoVivoService service = config.create();
             Call<List<ParadaDTO>> call2 = service.buscarParadas((String)getIntent().getSerializableExtra("cdLinha"));
@@ -394,7 +418,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
                     for(ParadaDTO dto : listOnibus){
                         LatLng latLng = new LatLng(dto.getPy(), dto.getPx());
-
                         mMap.addMarker(new MarkerOptions().position(latLng).title("Nome da Parada: "+dto.getNmParada()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
                     }
 
