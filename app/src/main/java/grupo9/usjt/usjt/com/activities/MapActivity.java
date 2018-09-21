@@ -36,7 +36,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 
 import java.io.IOException;
-import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
 import grupo9.usjt.usjt.com.dto.ParadaDTO;
-import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
@@ -335,7 +335,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap){
         mMap = googleMap;
         String[] param = new String[1];
         int[] param1 = new int[1];
@@ -377,7 +377,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             for(OnibusDTO dto : listOnibus){
                 LatLng latLng = new LatLng(dto.getLatOnibus(), dto.getLngOnibus());
 
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
             }
 
             RetrofitConfig config = new RetrofitConfig();
