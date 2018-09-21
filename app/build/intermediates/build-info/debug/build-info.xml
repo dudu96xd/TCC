@@ -6,22 +6,22 @@
     density="xhdpi"
     format="10"
     plugin-version="3.1.4"
-    timestamp="1537494449576"
+    timestamp="1537495250064"
     token="-7803080989657943970"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="2083" />
+        duration="2156" />
     <task
         name="instant-run-dex"
-        duration="56" />
+        duration="107" />
     <task
         name="instant-run-transform"
-        duration="50" />
+        duration="84" />
     <task
         name="verifier"
-        duration="13" />
+        duration="18" />
 
     <artifact
         location="C:\Development\Source\TCC\app\build\intermediates\reload-dex\debug\classes.dex"
@@ -83,7 +83,7 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1537494169762"
+        timestamp="1537495207850"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Development\Source\TCC\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
@@ -91,31 +91,7 @@
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1537494299903"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Development\Source\TCC\app\build\intermediates\builds\debug\1537494299903\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1537494351497"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Development\Source\TCC\app\build\intermediates\builds\debug\1537494351497\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1537494382555"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Development\Source\TCC\app\build\intermediates\builds\debug\1537494382555\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        build-mode="HOT_WARM"
-        timestamp="1537494449576"
+        timestamp="1537495250064"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Development\Source\TCC\app\build\intermediates\reload-dex\debug\classes.dex"

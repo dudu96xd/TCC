@@ -36,8 +36,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -356,13 +354,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
 
-        //mMap.setMinZoomPreference(10.0f);
+        mMap.setMinZoomPreference(10.0f);
 
-       // mMap.setMaxZoomPreference(16.7f);
+        mMap.setMaxZoomPreference(16.7f);
 
         onRequestPermissionsResult(0,param,param1);
-        myLocation = this.getLocation(false);
-
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(-23.572847, -46.629716))      // Define o centro do mapa para localização do usuário em São Paulo
+                .build();                   // define uma posição da câmera do construtor
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mMap.setOnPolylineClickListener(this);
 
         mMap.setTrafficEnabled(true);
