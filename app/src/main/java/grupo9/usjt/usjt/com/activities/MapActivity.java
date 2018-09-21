@@ -3,6 +3,7 @@ package grupo9.usjt.usjt.com.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 
@@ -338,6 +340,21 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         String[] param = new String[1];
         int[] param1 = new int[1];
         param1[0] = 0;
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.retro));
+
+            if (!success) {
+                Log.e("2", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("2", "Can't find style. Error: ", e);
+        }
+
 
         //mMap.setMinZoomPreference(10.0f);
 
