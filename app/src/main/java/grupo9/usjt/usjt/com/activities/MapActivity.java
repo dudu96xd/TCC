@@ -1,10 +1,10 @@
 package grupo9.usjt.usjt.com.activities;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -12,7 +12,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +19,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,31 +26,32 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import grupo9.usjt.usjt.com.dto.BuscaDTO;
+import grupo9.usjt.usjt.com.dto.OnibusDTO;
+import grupo9.usjt.usjt.com.dto.ParadaDTO;
 import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Streaming;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnPolylineClickListener {
 
-    @InjectView(R.id.search_button)
-    Button searchButton;
     @InjectView(R.id.textSearch)
     EditText textSearch;
 
@@ -103,7 +102,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
         case R.id.add:
-            Toast.makeText(getBaseContext(),"Favotitos selecionado!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(),"Favoritos selecionado!",Toast.LENGTH_LONG).show();
             return(true);
         case R.id.about:
             //add the function to perform here
@@ -170,7 +169,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public android.location.Location getLocation(boolean flagZoom) {
         try {
             if(checkLocationPermission()){
-                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
                 // getting GPS status
                 assert locationManager != null;
@@ -283,6 +282,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     //private final String apiCredentials = getToken() ;
 
 
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode){
+        super.startActivityForResult(intent,requestCode);
+    }
+
 
     public void onMapSearch(View view) {
         EditText locationSearch = findViewById(R.id.textSearch);
@@ -297,13 +301,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         try {
 
             addressList = geocoder.getFromLocationName(location, 1);
-            RetrofitConfig config = new RetrofitConfig();
-            OlhoVivoService service = config.create();
-            Call<List<BuscaDTO>> call = service.buscar(locationSearch.getText().toString());
-            Response<List<BuscaDTO>> response = call.execute();
-
-            Call<PosicaoOnibusDTO> call2 = service.buscarOnibus(response.body().get(0).getCdLinha());
-            Response<PosicaoOnibusDTO> response2 = call2.execute();
+            Intent intent = new Intent(getApplicationContext(), ListaLinhasActivity.class);
+            intent.putExtra("input", location);
+            startActivityForResult(intent, 3);
 
 
         } catch (IOException e) {
@@ -323,7 +323,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -340,20 +339,60 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         int[] param1 = new int[1];
         param1[0] = 0;
 
-        onRequestPermissionsResult(0,param,param1);
-        myLocation = this.getLocation(true);
+        //mMap.setMinZoomPreference(10.0f);
 
-        Polyline line = mMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(-23.54749,-46.640068)).add(new LatLng(-23.547469,-46.639953)).add(new LatLng(-23.547432,-46.639754)).add(new LatLng(-23.546026,-46.638818)).add(new LatLng(-23.545038,-46.638042))
-                .width(5)
-                .color(Color.BLACK));
+       // mMap.setMaxZoomPreference(16.7f);
+
+        onRequestPermissionsResult(0,param,param1);
+        myLocation = this.getLocation(false);
 
         mMap.setOnPolylineClickListener(this);
 
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
+        if(getIntent().getSerializableExtra("listaOnibus")!=null){
+            int height = 75;
+            int width = 50;
+            BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
+            Bitmap b=bitmapdraw.getBitmap();
+            Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+            ArrayList<OnibusDTO> listOnibus =(ArrayList<OnibusDTO>) getIntent().getSerializableExtra("listaOnibus");
+            for(OnibusDTO dto : listOnibus){
+                LatLng latLng = new LatLng(dto.getLatOnibus(), dto.getLngOnibus());
 
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+            }
+
+            RetrofitConfig config = new RetrofitConfig();
+            OlhoVivoService service = config.create();
+            Call<List<ParadaDTO>> call2 = service.buscarParadas((String)getIntent().getSerializableExtra("cdLinha"));
+            call2.enqueue(new Callback<List<ParadaDTO>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<ParadaDTO>> call, @NonNull Response<List<ParadaDTO>> response) {
+                    int height = 75;
+                    int width = 50;
+                    List<ParadaDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()));
+                    BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.shelterbusstation);
+                    Bitmap b=bitmapdraw.getBitmap();
+                    Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+                    for(ParadaDTO dto : listOnibus){
+                        LatLng latLng = new LatLng(dto.getPy(), dto.getPx());
+
+                        mMap.addMarker(new MarkerOptions().position(latLng).title("Nome da Parada: "+dto.getNmParada()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<List<ParadaDTO>> call, @NonNull Throwable t) {
+                    Log.e("Erro de integracao", "Deu ruim na integracao");
+                    t.printStackTrace();
+                }
+            });
+        }
     }
+
+
 
     private LatLngBounds adjustBoundsForMaxZoomLevel(LatLngBounds bounds) {
         LatLng sw = bounds.southwest;
@@ -375,9 +414,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         return bounds;
     }
-@Streaming
     @Override
     public void onPolylineClick(Polyline polyline) {
 
     }
+
 }

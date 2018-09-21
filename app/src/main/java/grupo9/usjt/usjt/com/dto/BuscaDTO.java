@@ -2,13 +2,17 @@ package grupo9.usjt.usjt.com.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BuscaDTO {
+import java.io.Serializable;
+
+public class BuscaDTO implements Serializable{
+
+    private static final long serialVersionUID = 3591765487136062258L;
     /**cdLinha*/
     @JsonProperty("cl")
     private String cdLinha;
     /**modoCircular*/
     @JsonProperty("lc")
-    private String modoCircular;
+    private boolean modoCircular;
     /**primLetreiro*/
     @JsonProperty("lt")
     private String primLetreiro;
@@ -17,7 +21,7 @@ public class BuscaDTO {
     private String segLetreiro;
     /**segLetreiro*/
     @JsonProperty("sl")
-    private String sentidoLinha;
+    private int sentidoLinha;
     /**letreiroSentidoPrinc*/
     @JsonProperty("tp")
     private String letreiroSentidoPrinc;
@@ -33,11 +37,11 @@ public class BuscaDTO {
         this.cdLinha = cdLinha;
     }
 
-    public String getModoCircular() {
+    public boolean getModoCircular() {
         return modoCircular;
     }
 
-    public void setModoCircular(String modoCircular) {
+    public void setModoCircular(boolean modoCircular) {
         this.modoCircular = modoCircular;
     }
 
@@ -57,11 +61,11 @@ public class BuscaDTO {
         this.segLetreiro = segLetreiro;
     }
 
-    public String getSentidoLinha() {
+    public int getSentidoLinha() {
         return sentidoLinha;
     }
 
-    public void setSentidoLinha(String sentidoLinha) {
+    public void setSentidoLinha(int sentidoLinha) {
         this.sentidoLinha = sentidoLinha;
     }
 
@@ -79,5 +83,12 @@ public class BuscaDTO {
 
     public void setLetreiroSentidoSec(String letreiroSentidoSec) {
         this.letreiroSentidoSec = letreiroSentidoSec;
+    }
+
+    @Override
+    public String toString() {
+        return  "Nº do Onibus = "+ primLetreiro + "-" + segLetreiro +"\n" +
+                (sentidoLinha==1?   "-> " + letreiroSentidoPrinc +"\n"+ "<- " + letreiroSentidoSec:
+                                    "-> " + letreiroSentidoSec + "\n" + "<- "+ letreiroSentidoPrinc) ;
     }
 }

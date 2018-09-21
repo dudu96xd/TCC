@@ -22,11 +22,12 @@ public class RetrofitConfig {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
                 Request original = chain.request();
+                String token = TokenHelper.token;
 
                 Request request;
-                if(TokenHelper.token!=null){
+                if(token!=null){
                 request = original.newBuilder()
-                        .addHeader("Cookie","apiCredentials="+TokenHelper.token+"; path=/; HttpOnly")
+                        .addHeader("Cookie","apiCredentials="+token+"; path=/; HttpOnly")
                         .method(original.method(), original.body())
                         .build();
                 }

@@ -74,6 +74,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuBarActivity" />
+        <activity android:name=".ListaLinhasActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:label="@string/label_list_linhas"/>
 
     </application>
 

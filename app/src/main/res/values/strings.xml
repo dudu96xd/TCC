@@ -8,5 +8,6 @@
     <string name="fav_item">Favoritos</string>
     <string name="about">Guia de Utilização</string>
     <string name="exit">Logoff</string>
+    <string name="label_list_linhas">Lista de linhas disponíveis</string>
 
 </resources>

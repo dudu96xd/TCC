@@ -1,4 +1,7 @@
 package grupo9.usjt.usjt.com.helper.utils;
+import android.os.StrictMode;
+import android.support.annotation.NonNull;
+
 import java.io.IOException;
 
 import grupo9.usjt.usjt.com.activities.R;
@@ -7,8 +10,15 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class TokenHelper {
+    @NonNull
+    public static String token;
 
-    public static String token = getToken();
+    static {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+        token = getToken();
+    }
 
     private static RetrofitConfig config;
     private static OlhoVivoService service;
