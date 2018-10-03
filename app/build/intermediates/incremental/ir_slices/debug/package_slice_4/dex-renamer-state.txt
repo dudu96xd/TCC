@@ -1,4 +1,4 @@
-#Wed Oct 03 11:45:36 BRT 2018
-base.0=C\:\\dev\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\21
+#Wed Oct 03 14:34:14 BRT 2018
+base.0=C\:\\dev\\Source\\TCC\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\5
 path.0=classes.dex
 renamed.0=classes.dex

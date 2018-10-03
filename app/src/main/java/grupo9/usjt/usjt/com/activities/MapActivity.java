@@ -307,7 +307,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         try {
 
             addressList = geocoder.getFromLocationName(location, 1);
-            Intent intent = new Intent(getApplicationContext(), ListaLinhasActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ListaLinhaActivity.class);
             intent.putExtra("input", location);
             startActivityForResult(intent, 3);
 

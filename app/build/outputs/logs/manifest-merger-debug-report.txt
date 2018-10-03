@@ -1,12 +1,12 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
+ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
 MERGED from [com.android.support:design:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ea9d81eec9df0c44fd43207a53a9d4d2\AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.android:facebook-login:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.1.aar\6c8c928b6f6a1ddab8533af64ab01673\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:21:1-37:12
+MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\4d32a93cc767c953a3c2a5efe22d619e\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:21:1-37:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\8a1e052a3e1c1d4506ce2bacfe05c151\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.8.0.aar\b3d3ed853624d6d210e617ee2314fb0f\AndroidManifest.xml:17:1-32:12
 MERGED from [com.android.support:gridlayout-v7:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\gridlayout-v7-27.0.2.aar\9eab8d465dfef6dc36929d5684caca6a\AndroidManifest.xml:17:1-22:12
@@ -15,7 +15,7 @@ MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\igor.tr
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\6bcf6fa757a237ffa9c4c4e881421a75\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-v4:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\f3a62aeafcce8bccab68b24757848400\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\9969f22c93ab3b86b0a02d0ec7bd0a28\AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:21:1-53:12
+MERGED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:21:1-53:12
 MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\071419630efdddbefd2099f5eb17d427\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\8eae59a50433db568f90562ee2229986\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\a43b9adf5eccec6996a4cf3655e1b80b\AndroidManifest.xml:17:1-22:12
@@ -31,20 +31,20 @@ MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\0ef33c1473a34d4030746b8cf6229658\AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\aab175b1ad049116e561c9b6d7743760\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\0236f3d06c558b0a07ff9ea0c95165f4\AndroidManifest.xml:2:1-6:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
-INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
+INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
 	package
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
-		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
+		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
-		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-83:12
+		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:1-82:12
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:2:11-69
@@ -73,11 +73,11 @@ ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:13:5-75
 	android:name
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:13:22-73
 application
-ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:14:5-81:19
-MERGED from [com.facebook.android:facebook-login:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.1.aar\6c8c928b6f6a1ddab8533af64ab01673\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.1.aar\6c8c928b6f6a1ddab8533af64ab01673\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:28:5-35:19
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:28:5-35:19
+ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:14:5-80:19
+MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\4d32a93cc767c953a3c2a5efe22d619e\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\4d32a93cc767c953a3c2a5efe22d619e\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:28:5-35:19
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:28:5-35:19
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.8.0.aar\b3d3ed853624d6d210e617ee2314fb0f\AndroidManifest.xml:30:5-20
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.8.0.aar\b3d3ed853624d6d210e617ee2314fb0f\AndroidManifest.xml:30:5-20
 MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\9a654b6106dd91819a53063ac0ce171f\AndroidManifest.xml:22:5-27:19
@@ -86,8 +86,8 @@ MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\igor.tr
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\11f29bde7df6edf0d6896e1eb41eb127\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\6bcf6fa757a237ffa9c4c4e881421a75\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\6bcf6fa757a237ffa9c4c4e881421a75\AndroidManifest.xml:22:5-26:19
-MERGED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:28:5-51:19
-MERGED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:28:5-51:19
+MERGED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:28:5-51:19
+MERGED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:28:5-51:19
 MERGED from [com.google.android.gms:play-services-maps-license:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-license-11.8.0.aar\fdf32d90d2c2f34b33007293e52b1648\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-maps-license:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-license-11.8.0.aar\fdf32d90d2c2f34b33007293e52b1648\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-base-license-11.8.0.aar\13133b35df3c1bdb140a4aa1ebe9694f\AndroidManifest.xml:5:5-20
@@ -156,20 +156,20 @@ ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:51:9-56:20
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:54:13-40
 activity#com.facebook.FacebookActivity
 ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:61:9-64:48
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:29:9-32:66
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:29:9-32:66
 	android:label
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:64:13-45
 	android:configChanges
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:62:13-114
 	android:theme
-		ADDED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:32:13-63
+		ADDED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:32:13-63
 	android:name
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:61:19-63
 activity#com.facebook.CustomTabActivity
 ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:66:9-75:20
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:34:9-67
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:34:9-67
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:34:9-67
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:34:9-67
 	android:exported
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:68:13-36
 	android:name
@@ -196,24 +196,20 @@ activity#grupo9.usjt.usjt.com.activities.MenuBarActivity
 ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:76:9-53
 	android:name
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:76:19-50
-activity#grupo9.usjt.usjt.com.activities.ListaLinhasActivity
-ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:77:9-79:56
-	android:label
-		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:79:13-54
-	android:theme
-		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:78:13-71
+activity#grupo9.usjt.usjt.com.activities.ListaLinhaActivity
+ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:77:9-56
 	android:name
-		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:77:19-54
+		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml:77:19-53
 uses-sdk
 INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ea9d81eec9df0c44fd43207a53a9d4d2\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\ea9d81eec9df0c44fd43207a53a9d4d2\AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.android:facebook-login:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.1.aar\6c8c928b6f6a1ddab8533af64ab01673\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.36.1.aar\6c8c928b6f6a1ddab8533af64ab01673\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\4d32a93cc767c953a3c2a5efe22d619e\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\4d32a93cc767c953a3c2a5efe22d619e\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:24:5-26:41
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\8a1e052a3e1c1d4506ce2bacfe05c151\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\8a1e052a3e1c1d4506ce2bacfe05c151\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.8.0.aar\b3d3ed853624d6d210e617ee2314fb0f\AndroidManifest.xml:20:5-44
@@ -230,8 +226,8 @@ MERGED from [com.android.support:support-v4:27.0.2] C:\Users\igor.troncoso.salvi
 MERGED from [com.android.support:support-v4:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\f3a62aeafcce8bccab68b24757848400\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\9969f22c93ab3b86b0a02d0ec7bd0a28\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\9969f22c93ab3b86b0a02d0ec7bd0a28\AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:24:5-26:41
 MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\071419630efdddbefd2099f5eb17d427\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\071419630efdddbefd2099f5eb17d427\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\8eae59a50433db568f90562ee2229986\AndroidManifest.xml:20:5-44
@@ -273,9 +269,9 @@ INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 		ADDED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 		INJECTED from C:\dev\Source\TCC\app\src\main\AndroidManifest.xml
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:33:9-71
+ADDED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:33:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-common:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.36.1.aar\c2a9a4921dae148f7f6c829d188400ce\AndroidManifest.xml:33:19-68
+		ADDED from [com.facebook.android:facebook-common:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-common-4.37.0.aar\a6ce1a3687a43163c4a3d569b2739408\AndroidManifest.xml:33:19-68
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.8.0.aar\b3d3ed853624d6d210e617ee2314fb0f\AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
@@ -297,22 +293,22 @@ ADDED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\igor.
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\6bcf6fa757a237ffa9c4c4e881421a75\AndroidManifest.xml:24:13-58
 provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:39:9-42:40
+ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:39:9-42:40
 	android:authorities
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:41:13-72
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:41:13-72
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:42:13-37
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:42:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:40:13-70
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:40:13-70
 receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:44:9-50:20
+ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:44:9-50:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:46:13-37
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:45:13-86
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:45:13-86
 intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:47:13-49:29
+ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:47:13-49:29
 action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:48:17-95
+ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:48:17-95
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.36.1] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.36.1.aar\30ba3af618bbdcbf2871ed89dde7131c\AndroidManifest.xml:48:25-92
+		ADDED from [com.facebook.android:facebook-core:4.37.0] C:\Users\igor.troncoso.salvio\.gradle\caches\transforms-1\files-1.1\facebook-core-4.37.0.aar\7db1617871f3009ad2102fcce1f46f0d\AndroidManifest.xml:48:25-92
