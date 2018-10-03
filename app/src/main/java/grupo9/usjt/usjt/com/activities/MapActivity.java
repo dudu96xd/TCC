@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -34,23 +35,17 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
-import grupo9.usjt.usjt.com.dto.ParadaCSVDTO;
-import grupo9.usjt.usjt.com.dto.ParadaDTO;
-import grupo9.usjt.usjt.com.helper.utils.JsonParser;
-import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
-import grupo9.usjt.usjt.com.services.OlhoVivoService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import grupo9.usjt.usjt.com.dto.TracadoLinhaCSVDTO;
+import grupo9.usjt.usjt.com.helper.utils.GTFSConsumer;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnPolylineClickListener {
 
@@ -391,44 +386,41 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
             }
 
-            JsonParser parser = new JsonParser(this);
-            String idTrip = parser.readTrips(getIntent().getSerializableExtra("letreiroPrinc")+"-"+getIntent().getSerializableExtra("letreiroSec"));
+            GTFSConsumer parser = new GTFSConsumer(this);
+            String prefixo = getIntent().getSerializableExtra("letreiroPrinc") + "-" + getIntent().getSerializableExtra("letreiroSec");
+            String idTrip = parser.readTrips(prefixo);
 
-            bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.shelterbusstation);
-            b=bitmapdraw.getBitmap();
-            smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+            String[] stripsData = idTrip.split(";");
+            List<TracadoLinhaCSVDTO> listaPontosTracado = parser.findPontosLinha(stripsData[0]);
 
-            List<ParadaCSVDTO> listaPontos = parser.findPontosParada(idTrip);
-            for(ParadaCSVDTO dto : listaPontos){
+            //List<String> listStopId = parser.findStopIdsByLinha(stripsData[1]);
+
+            //List<LatLng> listStopPoints = parser.findStopPointsByStopId(listStopId);
+
+            //height = 50;
+            //width = 75;
+            //bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.shelterbusstation);
+            //b=bitmapdraw.getBitmap();
+            //smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
+            //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+
+            //for(LatLng latLng : listStopPoints){
+            //    mMap.addMarker(markerOptions.position(latLng));
+            //}
+
+            PolylineOptions polylineOptions = new PolylineOptions().width(5)
+                    .color(Color.MAGENTA);
+            List<LatLng> list = new ArrayList<>();
+            for(TracadoLinhaCSVDTO dto : listaPontosTracado){
                 LatLng latLng = new LatLng(dto.getPy(), dto.getPx());
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Ponto de Onibus").icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+                list.add(latLng);
             }
 
-            RetrofitConfig config = new RetrofitConfig();
-            OlhoVivoService service = config.create();
-            Call<List<ParadaDTO>> call2 = service.buscarParadas((String)getIntent().getSerializableExtra("cdLinha"));
-            call2.enqueue(new Callback<List<ParadaDTO>>() {
-                @Override
-                public void onResponse(@NonNull Call<List<ParadaDTO>> call, @NonNull Response<List<ParadaDTO>> response) {
-                    int height = 75;
-                    int width = 50;
-                    List<ParadaDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()));
-                    BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.shelterbusstation);
-                    Bitmap b=bitmapdraw.getBitmap();
-                    Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
-                    for(ParadaDTO dto : listOnibus){
-                        LatLng latLng = new LatLng(dto.getPy(), dto.getPx());
-                        mMap.addMarker(new MarkerOptions().position(latLng).title("Nome da Parada: "+dto.getNmParada()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
-                    }
+            mMap.addPolyline(polylineOptions
+                    .addAll(list));
 
-                }
 
-                @Override
-                public void onFailure(@NonNull Call<List<ParadaDTO>> call, @NonNull Throwable t) {
-                    Log.e("Erro de integracao", "Deu ruim na integracao");
-                    t.printStackTrace();
-                }
-            });
         }
     }
 

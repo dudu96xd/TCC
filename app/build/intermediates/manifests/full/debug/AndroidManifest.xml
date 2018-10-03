@@ -30,6 +30,7 @@
         android:resizeableActivity="true"
         android:roundIcon="@drawable/logomini"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

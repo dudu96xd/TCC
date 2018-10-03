@@ -66,8 +66,8 @@ public class ListaLinhasActivity extends ListActivity {
                 List<OnibusDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()).getLinhaDTO());
                 Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                 intent.putExtra("listaOnibus", (Serializable) listOnibus);
-                intent.putExtra("letreiroPrinc",listItems.get(position).getLetreiroSentidoPrinc());
-                intent.putExtra("letreiroSec",listItems.get(position).getLetreiroSentidoSec());
+                intent.putExtra("letreiroPrinc",listItems.get(position).getPrimLetreiro());
+                intent.putExtra("letreiroSec",listItems.get(position).getSegLetreiro());
                 intent.putExtra("cdLinha",listItems.get(position).getCdLinha());
                 startActivityForResult(intent, 5);
 
