@@ -1,6 +1,7 @@
 package grupo9.usjt.usjt.com.activities;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -108,7 +109,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
         case R.id.favoritos:
-            Toast.makeText(getBaseContext(),"Favoritos selecionado!",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(),"Favoritos selecionado!",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), ListaFavoritosActivity.class);
             startActivityForResult(intent, 4);
             return(true);
@@ -376,6 +377,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
         if(getIntent().getSerializableExtra("listaOnibus")!=null){
+
+            final ProgressDialog progressDialog = new ProgressDialog(this,
+                    R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Carregando...");
+            progressDialog.show();
+
             int height = 75;
             int width = 50;
             BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
@@ -421,7 +429,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             mMap.addPolyline(polylineOptions
                     .addAll(list));
-
+            progressDialog.dismiss();
 
         }
     }

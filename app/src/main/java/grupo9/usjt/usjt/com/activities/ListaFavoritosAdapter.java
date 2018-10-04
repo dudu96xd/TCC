@@ -1,6 +1,10 @@
 package grupo9.usjt.usjt.com.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +14,21 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import grupo9.usjt.usjt.com.dao.FavoritoDAO;
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
+import grupo9.usjt.usjt.com.dto.OnibusDTO;
+import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.helper.utils.LoginHelper;
+import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
+import grupo9.usjt.usjt.com.services.OlhoVivoService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListaFavoritosAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<BuscaDTO> list;
@@ -53,12 +67,44 @@ public class ListaFavoritosAdapter extends BaseAdapter implements ListAdapter {
         }
 
         //Handle TextView and display string from your list
-        TextView btnExcluirFav = view.findViewById(R.id.list_item_string);
-        btnExcluirFav.setText(list.get(position).toString());
+        TextView textViewLinha = view.findViewById(R.id.list_item_string);
+        textViewLinha.setText(list.get(position).toString());
+        textViewLinha.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                RetrofitConfig config = new RetrofitConfig();
+                OlhoVivoService service = config.create();
+                Call<PosicaoOnibusDTO> call2 = service.buscarOnibus(list.get(position).getCdLinha());
 
+                final ProgressDialog progressDialog = new ProgressDialog(context,
+                        R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Carregando...");
+                progressDialog.show();
+
+                call2.enqueue(new Callback<PosicaoOnibusDTO>() {
+                    @Override
+                    public void onResponse(@NonNull Call<PosicaoOnibusDTO> call, @NonNull Response<PosicaoOnibusDTO> response) {
+                        List<OnibusDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()).getLinhaDTO());
+                        Intent intent = new Intent(context, MapActivity.class);
+                        intent.putExtra("listaOnibus", (Serializable) listOnibus);
+                        intent.putExtra("letreiroPrinc",list.get(position).getPrimLetreiro());
+                        intent.putExtra("letreiroSec",list.get(position).getSegLetreiro());
+                        intent.putExtra("cdLinha",list.get(position).getCdLinha());
+                        progressDialog.dismiss();
+                        context.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<PosicaoOnibusDTO> call, @NonNull Throwable t) {
+                        Log.e("Erro de integracao", "Deu ruim na integracao");
+                        t.printStackTrace();
+                    }
+                });
+            }
+        });
         //Handle buttons and add onClickListeners
         final Button btnExcluirFavorito = view.findViewById(R.id.btn_excluir_favorito);
-
 
         btnExcluirFavorito.setOnClickListener(new View.OnClickListener(){
             @Override
