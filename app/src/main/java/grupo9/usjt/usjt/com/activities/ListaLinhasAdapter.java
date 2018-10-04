@@ -2,6 +2,7 @@ package grupo9.usjt.usjt.com.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import grupo9.usjt.usjt.com.dao.FavoritoDAO;
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
 import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
@@ -34,7 +36,7 @@ public class ListaLinhasAdapter extends BaseAdapter implements ListAdapter {
 
 
 
-    public ListaLinhasAdapter(ArrayList<BuscaDTO> list, Context context) {
+    ListaLinhasAdapter(ArrayList<BuscaDTO> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -60,6 +62,7 @@ public class ListaLinhasAdapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert inflater != null;
             view = inflater.inflate(R.layout.activity_adapter, null);
         }
 
@@ -94,13 +97,20 @@ public class ListaLinhasAdapter extends BaseAdapter implements ListAdapter {
         });
 
         //Handle buttons and add onClickListeners
-        Button btnFavoritar = view.findViewById(R.id.btn_favoritar);
+        final Button btnFavoritar = view.findViewById(R.id.btn_favoritar);
 
 
         btnFavoritar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Favoritar selecionado!",Toast.LENGTH_SHORT);
+                //Toast.makeText(context,"Favoritar selecionado!",Toast.LENGTH_SHORT).show();
+
+                FavoritoDAO dao = new FavoritoDAO(context);
+                if(!dao.findFavorito(list.get(position))){
+                    dao.insertFavorito(list.get(position));
+                }
+                btnFavoritar.setEnabled(false);
+                btnFavoritar.setBackground(context.getResources().getDrawable(android.R.drawable.btn_star_big_on));
             }
         });
 

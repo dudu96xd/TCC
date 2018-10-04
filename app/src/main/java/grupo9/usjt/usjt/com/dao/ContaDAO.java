@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +33,13 @@ public class ContaDAO extends DBHelper {
         contentValues.put(CONTA_COLUMN_NAME, dto.getNome());
         contentValues.put(CONTA_COLUMN_EMAIL, dto.getEmail());
         contentValues.put(CONTA_COLUMN_PASSWORD, dto.getSenha());
-        db.insert("conta", null, contentValues);
+        try{
+            db.insertOrThrow("conta", null, contentValues);
+        }
+        catch(SQLiteConstraintException ex){
+            ex.printStackTrace();
+            System.exit(-1);
+        }
         return true;
     }
 
@@ -81,6 +90,17 @@ public class ContaDAO extends DBHelper {
 
         Cursor res =  db.rawQuery( "SELECT 1 from conta where email=? and password=?",
                 new String[]{dto.getEmail(),dto.getSenha() } );
+        int qtdLinhas = res.getCount();
+        res.close();
+        return qtdLinhas == 1;
+    }
+
+    public boolean findContaByIdUsuario(UsuarioDTO dto){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor res =  db.rawQuery( "SELECT 1 from conta where id_conta=? or email=?",
+                new String[]{dto.getIdUsuario(), dto.getEmail() } );
+        //Log.i("query_test",dto.getIdUsuario()dto.getEmail());
         int qtdLinhas = res.getCount();
         res.close();
         return qtdLinhas == 1;

@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -16,14 +17,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,6 +42,7 @@ import grupo9.usjt.usjt.com.dto.ContaDTO;
 import grupo9.usjt.usjt.com.dto.UsuarioDTO;
 import grupo9.usjt.usjt.com.dto.ValidadorContaDTO;
 import grupo9.usjt.usjt.com.helper.crypto.EncriptaHelper;
+import grupo9.usjt.usjt.com.helper.utils.LoginHelper;
 import grupo9.usjt.usjt.com.helper.utils.UtilsValidation;
 
 public class LoginActivity extends AppCompatActivity {
@@ -79,23 +88,54 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         this.printKeyHash();
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
-
-        LoginManager.getInstance().logOut();
-
+        if(LoginHelper.isLoggedIn()){
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            AppEventsLogger.activateApp(this);
+            LoginManager.getInstance().logOut();
+        }
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
 
         _fbLogin.setReadPermissions("email");
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
         // Callback registration
         _fbLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+
+                if(Profile.getCurrentProfile().getId()!=null){
+                    final ContaDTO dto = new ContaDTO();
+                    dto.setIdUsuario(Profile.getCurrentProfile().getId());
+                    dto.setSenha("1234567890");
+                    GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(JSONObject object, GraphResponse response) {
+                            try {
+                                dto.setEmail(object.getString("email"));
+                                dto.setNome(object.getString("first_name")+" "+object.getString("last_name"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            ContaDAO dao = new ContaDAO(getApplicationContext());
+                            if(!dao.findContaByIdUsuario(dto)){
+                                dao.insertConta(dto);
+                            }
+                            LoginHelper.ID_USER = Profile.getCurrentProfile().getId();
+                            LoginHelper.EMAIL = dto.getEmail();
+                            Log.d("userId",LoginHelper.ID_USER);
+                            Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+                            startActivityForResult(intent, REQUEST_SIGNUP);
+                        }
+                    });
+                    Bundle parameters = new Bundle();
+                    parameters.putString("fields", "email,first_name,last_name");
+                    request.setParameters(parameters);
+                    request.executeAndWait();
+                }
             }
 
             @Override

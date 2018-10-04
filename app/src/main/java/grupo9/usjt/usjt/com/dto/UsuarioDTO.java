@@ -2,8 +2,18 @@ package grupo9.usjt.usjt.com.dto;
 
 public class UsuarioDTO {
 
+    private String idUsuario;
     private String email;
     private String senha;
+
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getEmail() {
         return email;

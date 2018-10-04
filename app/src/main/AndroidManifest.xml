@@ -75,6 +75,7 @@
         </activity>
         <activity android:name=".MenuBarActivity" />
         <activity android:name=".ListaLinhaActivity" />
+        <activity android:name=".ListaFavoritosActivity" />
 
 
     </application>

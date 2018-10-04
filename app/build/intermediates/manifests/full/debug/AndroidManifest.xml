@@ -90,6 +90,7 @@
         </activity>
         <activity android:name="grupo9.usjt.usjt.com.activities.MenuBarActivity" />
         <activity android:name="grupo9.usjt.usjt.com.activities.ListaLinhaActivity" />
+        <activity android:name="grupo9.usjt.usjt.com.activities.ListaFavoritosActivity" />
         <activity android:name="com.facebook.CustomTabMainActivity" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
