@@ -258,7 +258,8 @@ public class LoginActivity extends AppCompatActivity {
     public void validarLogin(UsuarioDTO dto){
         if(new ContaDAO(this).findConta(dto)) {
             Toast.makeText(this, "Login realizado com Sucesso!!", Toast.LENGTH_SHORT).show();
-
+            LoginHelper.EMAIL = dto.getEmail();
+            LoginHelper.ID_USER = dto.getIdUsuario();
             onLoginSuccess();
 
             finish();

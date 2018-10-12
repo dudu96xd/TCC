@@ -113,6 +113,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Intent intent = new Intent(getApplicationContext(), ListaFavoritosActivity.class);
             startActivityForResult(intent, 4);
             return(true);
+        case R.id.mapa_sptrans:
+            Intent intent2 = new Intent(getApplicationContext(), ImageActivity.class);
+            startActivityForResult(intent2, 7);
+            return (true);
         case R.id.about:
             //add the function to perform here
             return(true);
@@ -378,12 +382,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setBuildingsEnabled(false);
         if(getIntent().getSerializableExtra("listaOnibus")!=null){
 
-            final ProgressDialog progressDialog = new ProgressDialog(this,
-                    R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Carregando...");
-            progressDialog.show();
-
             int height = 75;
             int width = 50;
             BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
@@ -429,7 +427,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             mMap.addPolyline(polylineOptions
                     .addAll(list));
-            progressDialog.dismiss();
 
         }
     }

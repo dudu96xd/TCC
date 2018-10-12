@@ -1,8 +1,9 @@
 package grupo9.usjt.usjt.com.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteConstraintException;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,7 @@ import grupo9.usjt.usjt.com.dao.FavoritoDAO;
 import grupo9.usjt.usjt.com.dto.BuscaDTO;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
 import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
+import grupo9.usjt.usjt.com.helper.utils.LoginHelper;
 import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
 import grupo9.usjt.usjt.com.services.OlhoVivoService;
 import retrofit2.Call;
@@ -72,6 +72,13 @@ public class ListaLinhasAdapter extends BaseAdapter implements ListAdapter {
         dsListaLinha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final ProgressDialog progressDialog = new ProgressDialog(context,
+                        R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Carregando...");
+                progressDialog.show();
+
                 RetrofitConfig config = new RetrofitConfig();
                 OlhoVivoService service = config.create();
                 Call<PosicaoOnibusDTO> call2 = service.buscarOnibus(list.get(position).getCdLinha());
@@ -104,13 +111,12 @@ public class ListaLinhasAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context,"Favoritar selecionado!",Toast.LENGTH_SHORT).show();
-
                 FavoritoDAO dao = new FavoritoDAO(context);
-                if(!dao.findFavorito(list.get(position))){
-                    dao.insertFavorito(list.get(position));
-                }
-                btnFavoritar.setEnabled(false);
-                btnFavoritar.setBackground(context.getResources().getDrawable(android.R.drawable.btn_star_big_on));
+                    if(!dao.findFavorito(list.get(position))){
+                        dao.insertFavorito(list.get(position));
+                    }
+                    btnFavoritar.setBackground(context.getResources().getDrawable(android.R.drawable.btn_star_big_on));
+                    btnFavoritar.setEnabled(false);
             }
         });
 

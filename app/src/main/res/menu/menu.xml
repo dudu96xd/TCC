@@ -6,6 +6,8 @@
     <item
         android:id="@+id/favoritos" android:icon="@android:drawable/btn_star_big_on" app:showAsAction="always"   android:title="@string/fav_item"/>
     <item
+        android:id="@+id/mapa_sptrans" android:icon="@drawable/metroimage" app:showAsAction="always"   android:title=""/>
+    <item
         android:id="@+id/about" android:icon="@android:drawable/ic_dialog_info" app:showAsAction="never" android:title="@string/about">
     </item>
     <item

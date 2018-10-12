@@ -616,12 +616,12 @@
         "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\8a1e052a3e1c1d4506ce2bacfe05c151\\res\\drawable-mdpi-v4\\abc_ic_star_black_36dp.png"
     },
     {
-        "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\raw_agency.txt.flat",
-        "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\raw\\agency.txt"
-    },
-    {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_drawable_remove_fav.xml.flat",
         "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\drawable\\drawable_remove_fav.xml"
+    },
+    {
+        "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\raw_agency.txt.flat",
+        "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\raw\\agency.txt"
     },
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_design_ic_visibility.png.flat",
@@ -818,6 +818,10 @@
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
         "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\83bf4da34bb5f39ea9e28da060fa0eeb\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_metroimage.png.flat",
+        "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\drawable\\metroimage.png"
     },
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_like_icon_selected.png.flat",
@@ -1034,6 +1038,10 @@
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\8a1e052a3e1c1d4506ce2bacfe05c151\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_image.xml.flat",
+        "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\layout\\activity_image.xml"
     },
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -2114,6 +2122,10 @@
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_favicon_blue.xml.flat",
         "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.37.0.aar\\a6ce1a3687a43163c4a3d569b2739408\\res\\drawable\\com_facebook_favicon_blue.xml"
+    },
+    {
+        "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_maparedemetro.png.flat",
+        "source": "C:\\dev\\Source\\TCC\\app\\src\\main\\res\\drawable\\maparedemetro.png"
     },
     {
         "merged": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_spinner_textfield_background_material.xml.flat",

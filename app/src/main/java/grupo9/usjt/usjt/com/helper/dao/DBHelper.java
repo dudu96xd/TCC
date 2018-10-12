@@ -23,8 +23,9 @@ public class DBHelper extends SQLiteOpenHelper {
                         "(id_conta integer primary key autoincrement, name text,email text unique not null, password text not null)"
         );
         db.execSQL("create table favorito " +
-                "(id_favorito integer primary key autoincrement, cd_linha integer not null, prim_letreiro text,seg_letreiro text,sentido_linha integer,prim_letreiro_sent_princ text,prim_letreiro_sent_seg text,fk_id_conta integer not null, foreign key(fk_id_conta) references conta(id_conta))");
-        //db.execSQL("create table local_pref (id_local_pref)");
+                "(id_favorito integer primary key autoincrement, cd_linha integer not null, prim_letreiro text,seg_letreiro text,sentido_linha integer," +
+                "prim_letreiro_sent_princ text,prim_letreiro_sent_seg text,fk_id_conta integer not null, foreign key(fk_id_conta) references conta(id_conta))");
+
     }
 
     @Override

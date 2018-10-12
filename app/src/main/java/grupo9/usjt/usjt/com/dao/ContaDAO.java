@@ -88,9 +88,13 @@ public class ContaDAO extends DBHelper {
     public boolean findConta(UsuarioDTO dto){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor res =  db.rawQuery( "SELECT 1 from conta where email=? and password=?",
+        Cursor res =  db.rawQuery( "SELECT id_conta from conta where email=? and password=?",
                 new String[]{dto.getEmail(),dto.getSenha() } );
         int qtdLinhas = res.getCount();
+        if(res.moveToFirst()){
+            dto.setIdUsuario(res.getString(0));
+        }
+
         res.close();
         return qtdLinhas == 1;
     }
