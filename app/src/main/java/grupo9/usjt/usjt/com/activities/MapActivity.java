@@ -199,6 +199,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                 });
             }
+            return (true);
         case R.id.exit:
             if(LoginHelper.isLoggedIn()){
                 FacebookSdk.sdkInitialize(getApplicationContext());
