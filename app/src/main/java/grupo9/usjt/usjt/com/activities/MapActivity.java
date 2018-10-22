@@ -25,6 +25,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -34,19 +37,30 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import grupo9.usjt.usjt.com.dto.OnibusDTO;
+import grupo9.usjt.usjt.com.dto.PosicaoOnibusDTO;
 import grupo9.usjt.usjt.com.dto.TracadoLinhaCSVDTO;
 import grupo9.usjt.usjt.com.helper.utils.GTFSConsumer;
+import grupo9.usjt.usjt.com.helper.utils.LoginHelper;
+import grupo9.usjt.usjt.com.helper.utils.RetrofitConfig;
+import grupo9.usjt.usjt.com.services.OlhoVivoService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnPolylineClickListener {
 
@@ -60,6 +74,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60;
     double latitude,longitude;
+    HashMap<String,Marker> mapMyLocation ;
+    HashMap<String , Marker> mapOnibus = new HashMap<>();
 
     LocationListener locationListenerGPS=new LocationListener() {
         @Override
@@ -69,13 +85,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             LatLng myLatLng = new LatLng(latitude,
                     longitude);
 
-            CameraPosition myPosition = new CameraPosition.Builder()
+            /**CameraPosition myPosition = new CameraPosition.Builder()
                     .target(myLatLng).build();
             mMap.animateCamera(
                     CameraUpdateFactory.newCameraPosition(myPosition));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
-            mMap.addMarker(new MarkerOptions().position(myLatLng).title("Localização atual."));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);*/
+            MarkerOptions markerMyLocation = new MarkerOptions().position(myLatLng).title("Localização atual.");
+            manipulaMarcadorLocalizacaoAtual();
+
+            mapMyLocation.put("localizacao",mMap.addMarker(markerMyLocation));
 
             //String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             //Toast.makeText(mContext,msg,Toast.LENGTH_LONG).show();
@@ -96,6 +115,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         }
     };
+
+    private void manipulaMarcadorLocalizacaoAtual() {
+        if(mapMyLocation==null){
+           mapMyLocation = new HashMap<>();
+        }else{
+            if(mapMyLocation.size()>0){
+                mapMyLocation.get("localizacao").remove();
+                mapMyLocation.remove("localizacao");
+            }
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,10 +149,63 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             startActivityForResult(intent2, 7);
             return (true);
         case R.id.about:
-            //add the function to perform here
+            Intent intent3 = new Intent(getApplicationContext(), GuiaActivity.class);
+            startActivityForResult(intent3, 7);
             return(true);
+        case R.id.refresh:
+            if(getIntent().getSerializableExtra("listaOnibus")!=null){
+                final ProgressDialog progressDialog = new ProgressDialog(this,
+                        R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Carregando...");
+                progressDialog.show();
+
+                RetrofitConfig config = new RetrofitConfig();
+                OlhoVivoService service = config.create();
+                Call<PosicaoOnibusDTO> call2 = service.buscarOnibus(getIntent().getStringExtra("cdLinha"));
+                call2.enqueue(new Callback<PosicaoOnibusDTO>() {
+                    @Override
+                    public void onResponse(@NonNull Call<PosicaoOnibusDTO> call, @NonNull Response<PosicaoOnibusDTO> response) {
+                        int height = 75;
+                        int width = 50;
+                        List<OnibusDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()).getLinhaDTO());
+                        int i=0;
+                        int j = 0;
+                        while (i<listOnibus.size()){
+                            LatLng latLng = new LatLng(listOnibus.get(i).getLatOnibus(), listOnibus.get(i).getLngOnibus());
+
+                            while(j < mapOnibus.size()){
+                                if(mapOnibus.containsKey("onibus"+j)){
+                                    Marker marker = mapOnibus.get("onibus"+j);
+                                    marker.remove();
+                                    mapOnibus.remove(marker);
+                                }
+                                j++;
+                            }
+                            BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
+                            Bitmap b=bitmapdraw.getBitmap();
+                            Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
+                            mapOnibus.put("onibus"+i,mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+listOnibus.get(i).getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker))));
+                            i++;
+                        }
+                        progressDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<PosicaoOnibusDTO> call, @NonNull Throwable t) {
+                        Log.e("Erro de integracao", "Deu ruim na integracao");
+                        t.printStackTrace();
+                    }
+                });
+            }
         case R.id.exit:
-            //add the function to perform here
+            if(LoginHelper.isLoggedIn()){
+                FacebookSdk.sdkInitialize(getApplicationContext());
+                AppEventsLogger.activateApp(this);
+                LoginManager.getInstance().logOut();
+            }
+            System.exit(0);
             return(true);
         }
         return(super.onOptionsItemSelected(item));
@@ -366,7 +450,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Log.e("2", "Can't find style. Error: ", e);
         }
 
-
+        Location location = getLocation(false);
+        //mapMyLocation.put("localizacao", new Latlocation.getLatitude() location.getLongitude())
         mMap.setMinZoomPreference(10.0f);
 
         mMap.setMaxZoomPreference(16.7f);
@@ -382,17 +467,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setBuildingsEnabled(false);
         if(getIntent().getSerializableExtra("listaOnibus")!=null){
 
-            int height = 75;
-            int width = 50;
-            BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
-            Bitmap b=bitmapdraw.getBitmap();
-            Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
-            ArrayList<OnibusDTO> listOnibus =(ArrayList<OnibusDTO>) getIntent().getSerializableExtra("listaOnibus");
-            for(OnibusDTO dto : listOnibus){
-                LatLng latLng = new LatLng(dto.getLatOnibus(), dto.getLngOnibus());
-
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
-            }
+            this.getListaOnibus();
 
             GTFSConsumer parser = new GTFSConsumer(this);
             String prefixo = getIntent().getSerializableExtra("letreiroPrinc") + "-" + getIntent().getSerializableExtra("letreiroSec");
@@ -431,6 +506,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+    private void getListaOnibus() {
+        int height = 75;
+        int width = 50;
+        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
+        Bitmap b=bitmapdraw.getBitmap();
+        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+        ArrayList<OnibusDTO> listOnibus =(ArrayList<OnibusDTO>) getIntent().getSerializableExtra("listaOnibus");
+        int i=0;
+        if(mapOnibus.isEmpty()){
+            preencheDadosOnibus(smallMarker, listOnibus, i);
+        }
+        else{
+            while(i < mapOnibus.size()){
+                if(mapOnibus.containsKey("onibus"+i)){
+                    Marker marker = mapOnibus.get("onibus"+i);
+                    marker.remove();
+                    mapOnibus.remove(marker);
+                }
+                i++;
+            }
+            preencheDadosOnibus(smallMarker, listOnibus, i);
+        }
+    }
+
+    private void preencheDadosOnibus(Bitmap smallMarker, @NonNull ArrayList<OnibusDTO> listOnibus, int i) {
+        if(listOnibus !=null && !listOnibus.isEmpty())
+            for(OnibusDTO dto : listOnibus){
+                LatLng latLng = new LatLng(dto.getLatOnibus(), dto.getLngOnibus());
+
+                mapOnibus.put("onibus"+i,mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+dto.getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker))));
+                i++;
+            }
+    }
 
 
     private LatLngBounds adjustBoundsForMaxZoomLevel(LatLngBounds bounds) {

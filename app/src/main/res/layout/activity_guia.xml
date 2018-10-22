@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Usar o Meu Busão é simples, na barra de pesquisa você precisa digitar o prefixo do ônibus, linha ou até o letreiro para localizar sua linha desejada!\n Caso se gostar da linha poderá clicar na estrela na tela da lista referente a sua busca que depois ela ficará salva na seção de favoritos!(No ícone de estrela no menu principal).\n Quando selecionar a linha você verá no mapa os ônibus em tempo real e o percurso da linha, se desejar ir atualizando o mapa temos um botão de refresh no menu para não ter necessidade de pesquisar a mesma linha novamente!" />
+</LinearLayout>
