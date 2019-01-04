@@ -2,6 +2,7 @@ package grupo9.usjt.usjt.com.activities;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -13,6 +14,8 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -28,6 +31,9 @@ import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -76,6 +82,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     double latitude,longitude;
     HashMap<String,Marker> mapMyLocation ;
     HashMap<String , Marker> mapOnibus = new HashMap<>();
+    private AdView mAdView;
+
 
     LocationListener locationListenerGPS=new LocationListener() {
         @Override
@@ -171,6 +179,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         List<OnibusDTO> listOnibus = new ArrayList<>(Objects.requireNonNull(response.body()).getLinhaDTO());
                         int i=0;
                         int j = 0;
+
+                        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
+                        Bitmap b=bitmapdraw.getBitmap();
+                        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
                         while (i<listOnibus.size()){
                             LatLng latLng = new LatLng(listOnibus.get(i).getLatOnibus(), listOnibus.get(i).getLngOnibus());
 
@@ -182,10 +194,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 }
                                 j++;
                             }
-                            BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.busstoplogoicon);
-                            Bitmap b=bitmapdraw.getBitmap();
-                            Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
-
                             mapOnibus.put("onibus"+i,mMap.addMarker(new MarkerOptions().position(latLng).title("Horário do Onibus: "+listOnibus.get(i).getHorario().substring(11,19)).icon(BitmapDescriptorFactory.fromBitmap(smallMarker))));
                             i++;
                         }
@@ -214,11 +222,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_map);
+        MobileAds.initialize(this, "ca-app-pub-6754486103727181~9691881363");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
         ButterKnife.inject(this);
@@ -273,6 +286,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 assert locationManager != null;
                 isGPSEnabled = locationManager
                         .isProviderEnabled(LocationManager.GPS_PROVIDER);
+                isNetworkEnabled = isInternetEnabled(this);
 
                 // getting network status
                 if (myLocation == null) {
@@ -285,6 +299,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             isNetworkEnabled = true;
                             latitude = myLocation.getLatitude();
                             longitude = myLocation.getLongitude();
+                        }
+                        else{
+                            myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         }
                     }
                 }
@@ -339,6 +356,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         return myLocation;
+    }
+
+    public static boolean isInternetEnabled(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifi != null) {
+            return wifi.isConnected();
+        }
+        return mobile != null && mobile.isConnected();
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -452,6 +480,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         Location location = getLocation(false);
+        myLocation = location;
         //mapMyLocation.put("localizacao", new Latlocation.getLatitude() location.getLongitude())
         mMap.setMinZoomPreference(10.0f);
 
@@ -463,7 +492,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .build();                   // define uma posição da câmera do construtor
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mMap.setOnPolylineClickListener(this);
-
+        getLocation(false);
         mMap.setTrafficEnabled(true);
         mMap.setBuildingsEnabled(false);
         if(getIntent().getSerializableExtra("listaOnibus")!=null){

@@ -20,6 +20,10 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:resizeableActivity="true">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6754486103727181~9691881363"/>
+
 
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"

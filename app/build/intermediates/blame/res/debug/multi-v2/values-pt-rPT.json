@@ -4,7 +4,41 @@
             "outputFile": "C:\\dev\\Source\\TCC\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rPT\\values-pt-rPT.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.37.0.aar\\4d32a93cc767c953a3c2a5efe22d619e\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\ff59f21800b764d7b4291f69c7cac2dd\\res\\values-pt-rPT\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "249,352,547,673,779,1006,1132,1280,1414,1661,1767,1968,2097,2315,2519,2613,2708",
+                        "endColumns": "102,194,125,105,226,125,147,133,246,105,200,128,217,203,93,94,111",
+                        "endOffsets": "351,546,672,778,1005,1131,1279,1413,1660,1766,1967,2096,2314,2518,2612,2707,2819"
+                    },
+                    "to": {
+                        "startLines": "42,43,44,45,46,47,48,49,51,52,53,54,55,56,57,58,59",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4518,4625,4820,4950,5060,5287,5417,5569,5911,6158,6268,6469,6602,6820,7028,7126,7225",
+                        "endColumns": "106,194,129,109,226,129,151,137,246,109,200,132,217,207,97,98,115",
+                        "endOffsets": "4620,4815,4945,5055,5282,5412,5564,5702,6153,6263,6464,6597,6815,7023,7121,7220,7336"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\31a14ad7fd1cc269552df8856e4855f1\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,225,331,438,527,628,752,836,917,1004,1111,1223,1325,1433,1540,1647,1818,1917",
+                        "endColumns": "119,105,106,88,100,123,83,80,86,106,111,101,107,106,106,170,98,84",
+                        "endOffsets": "220,326,433,522,623,747,831,912,999,1106,1218,1320,1428,1535,1642,1813,1912,1997"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,225,331,438,527,628,752,836,917,1004,1111,1223,1325,1433,1540,1647,1818,7975",
+                        "endColumns": "119,105,106,88,100,123,83,80,86,106,111,101,107,106,106,170,98,84",
+                        "endOffsets": "220,326,433,522,623,747,831,912,999,1106,1218,1320,1428,1535,1642,1813,1912,8055"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\b292556805231ce6e756e28f710f4bd0\\res\\values-pt-rPT\\values-pt-rPT.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,30 +55,13 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\83bf4da34bb5f39ea9e28da060fa0eeb\\res\\values-pt-rPT\\values-pt-rPT.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "61",
-                        "startColumns": "4",
-                        "startOffsets": "7426",
-                        "endColumns": "100",
-                        "endOffsets": "7522"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\6bcf6fa757a237ffa9c4c4e881421a75\\res\\values-pt-rPT\\values.xml",
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-16.0.1.aar\\d9165414c17330bdf0ff23e1eb23a315\\res\\values-pt-rPT\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
-                        "startOffsets": "287",
+                        "startOffsets": "251",
                         "endColumns": "203",
-                        "endOffsets": "490"
+                        "endOffsets": "454"
                     },
                     "to": {
                         "startLines": "50",
@@ -55,37 +72,37 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\8a1e052a3e1c1d4506ce2bacfe05c151\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\3eb4dec0ea0d57cf688ca7e1bca0f693\\res\\values-pt-rPT\\values-pt-rPT.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,225,331,438,527,628,752,836,917,1004,1111,1223,1325,1433,1540,1647,1818,1917",
-                        "endColumns": "119,105,106,88,100,123,83,80,86,106,111,101,107,106,106,170,98,84",
-                        "endOffsets": "220,326,433,522,623,747,831,912,999,1106,1218,1320,1428,1535,1642,1813,1912,1997"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,60",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,225,331,438,527,628,752,836,917,1004,1111,1223,1325,1433,1540,1647,1818,7341",
-                        "endColumns": "119,105,106,88,100,123,83,80,86,106,111,101,107,106,106,170,98,84",
-                        "endOffsets": "220,326,433,522,623,747,831,912,999,1106,1218,1320,1428,1535,1642,1813,1912,7421"
+                        "startLines": "68",
+                        "startColumns": "4",
+                        "startOffsets": "8060",
+                        "endColumns": "100",
+                        "endOffsets": "8156"
                     }
                 },
                 {
-                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\9a654b6106dd91819a53063ac0ce171f\\res\\values-pt-rPT\\values.xml",
+                    "source": "C:\\Users\\igor.troncoso.salvio\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-17.1.2.aar\\d55daada26668a1584a05a601943d2f2\\res\\values-pt-rPT\\values.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "285,388,583,709,815,1042,1168,1316,1450,1697,1803,2004,2133,2351,2555,2649,2744",
-                        "endColumns": "102,194,125,105,226,125,147,133,246,105,200,128,217,203,93,94,111",
-                        "endOffsets": "387,582,708,814,1041,1167,1315,1449,1696,1802,2003,2132,2350,2554,2648,2743,2855"
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "201,272,402,467,532,616,733",
+                        "endColumns": "70,129,64,64,83,116,73",
+                        "endOffsets": "271,401,466,531,615,732,806"
                     },
                     "to": {
-                        "startLines": "42,43,44,45,46,47,48,49,51,52,53,54,55,56,57,58,59",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4518,4625,4820,4950,5060,5287,5417,5569,5911,6158,6268,6469,6602,6820,7028,7126,7225",
-                        "endColumns": "106,194,129,109,226,129,151,137,246,109,200,132,217,207,97,98,115",
-                        "endOffsets": "4620,4815,4945,5055,5282,5412,5564,5702,6153,6263,6464,6597,6815,7023,7121,7220,7336"
+                        "startLines": "60,61,62,63,64,65,66",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "7341,7416,7550,7619,7688,7776,7897",
+                        "endColumns": "74,133,68,68,87,120,77",
+                        "endOffsets": "7411,7545,7614,7683,7771,7892,7970"
                     }
                 }
             ]

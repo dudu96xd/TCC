@@ -5,6 +5,14 @@
     android:orientation="vertical"
     tools:context="grupo9.usjt.usjt.com.activities.MapActivity">
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6754486103727181/6946298522">
+    </com.google.android.gms.ads.AdView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,5 +53,6 @@
         android:layout_height="match_parent"
         tools:context="grupo9.usjt.usjt.com.activities.MapActivity"
         tools:layout="@layout/activity_map" />
+
 
 </LinearLayout>
